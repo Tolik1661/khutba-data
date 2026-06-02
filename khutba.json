@@ -1,4 +1,14 @@
 {
-  "last_updated": "2026-06-02T10:00:00Z",
-  "khutba": []
+  "last_updated": "2026-06-02T11:52:29.672Z",
+  "khutba": [
+    {
+      "id": "khutba_20260602",
+      "date": "2026-06-02",
+      "date_display": "02.06.2026",
+      "title": "Тестовая хутба",
+      "speaker": "Тест Тестов",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-06-02.mp3",
+      "duration": 0
+    }
+  ]
 }
