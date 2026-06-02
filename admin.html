@@ -45,6 +45,9 @@
     <label>Название хутбы</label>
     <input type="text" id="title" placeholder="Например: О важности терпения">
 
+    <label>Спикер (имя автора)</label>
+    <input type="text" id="speaker" placeholder="Например: Шхануков Анзор">
+
     <label>Дата</label>
     <input type="date" id="date">
 
@@ -60,11 +63,11 @@
 </div>
 
 <script>
-// ====== НАСТРОЙКИ (замени на свои) ======
+// ====== НАСТРОЙКИ ======
 const GITHUB_OWNER = 'Tolik1661';
 const GITHUB_REPO  = 'khutba-data';
-const ADMIN_PASS   = 'namaz2026';        // пароль для входа в админку
-// ========================================
+const ADMIN_PASS   = 'namaz2026';
+// =======================
 
 let TOKEN = '';
 
@@ -96,7 +99,6 @@ function doLogin() {
 function showMain() {
   document.getElementById('loginBox').style.display = 'none';
   document.getElementById('mainBox').style.display  = 'block';
-  // Подставить сегодняшнюю дату
   document.getElementById('date').value = new Date().toISOString().split('T')[0];
 }
 
@@ -111,52 +113,50 @@ function log(msg, cls) {
 }
 
 async function doUpload() {
-  const title  = document.getElementById('title').value.trim();
-  const date   = document.getElementById('date').value;
-  const file   = document.getElementById('audioFile').files[0];
+  const title   = document.getElementById('title').value.trim();
+  const speaker = document.getElementById('speaker').value.trim();
+  const date    = document.getElementById('date').value;
+  const file    = document.getElementById('audioFile').files[0];
 
-  if (!title) { log('⚠️ Введите название', 'err'); return; }
-  if (!date)  { log('⚠️ Выберите дату', 'err'); return; }
-  if (!file)  { log('⚠️ Выберите аудиофайл', 'err'); return; }
+  if (!title)   { log('⚠️ Введите название', 'err'); return; }
+  if (!speaker) { log('⚠️ Введите имя спикера', 'err'); return; }
+  if (!date)    { log('⚠️ Выберите дату', 'err'); return; }
+  if (!file)    { log('⚠️ Выберите аудиофайл', 'err'); return; }
 
   document.getElementById('uploadBtn').disabled = true;
 
   try {
-    // 1. Читаем файл как base64
     log('📂 Читаю файл...');
     const base64 = await toBase64(file);
 
-    // 2. Загружаем MP3 в audio/
     const audioPath = `audio/${date}.mp3`;
     log(`⬆️ Загружаю аудио в ${audioPath}...`);
     await githubPut(audioPath, base64, `Add audio ${date}`);
     log(`✅ Аудио загружено!`);
 
-    // 3. Скачиваем текущий khutba.json
     log('📥 Обновляю khutba.json...');
     const { content: oldContent, sha } = await githubGet('khutba.json');
     const jsonData = JSON.parse(atob(oldContent.replace(/\n/g,'')));
 
-    // 4. Добавляем запись
     const newEntry = {
       id:           `khutba_${date.replace(/-/g,'')}`,
       date:         date,
       date_display: date.split('-').reverse().join('.'),
       title:        title,
+      speaker:      speaker,
       audio_url:    `https://${GITHUB_OWNER}.github.io/${GITHUB_REPO}/${audioPath}`,
       duration:     0
     };
     jsonData.khutba.unshift(newEntry);
     jsonData.last_updated = new Date().toISOString();
 
-    // 5. Загружаем обновлённый JSON
     const newBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(jsonData, null, 2))));
     await githubPut('khutba.json', newBase64, `Add khutba ${date}: ${title}`, sha);
 
     log(`🎉 Готово! Хутба «${title}» добавлена.`, 'ok');
 
-    // Сбрасываем форму
-    document.getElementById('title').value = '';
+    document.getElementById('title').value   = '';
+    document.getElementById('speaker').value = '';
     document.getElementById('audioFile').value = '';
     document.getElementById('fileName').textContent = 'Файл не выбран';
 
