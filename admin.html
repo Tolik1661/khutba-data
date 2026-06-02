@@ -29,7 +29,6 @@
 <body>
 <div class="card">
 
-  <!-- Экран входа -->
   <div id="loginBox">
     <h1>🔐 Вход</h1>
     <label>Пароль</label>
@@ -38,7 +37,6 @@
     <div class="log" id="loginLog"></div>
   </div>
 
-  <!-- Основной экран -->
   <div id="mainBox">
     <h1>📋 Добавить хутбу</h1>
 
@@ -63,11 +61,9 @@
 </div>
 
 <script>
-// ====== НАСТРОЙКИ ======
 const GITHUB_OWNER = 'Tolik1661';
 const GITHUB_REPO  = 'khutba-data';
 const ADMIN_PASS   = 'namaz2026';
-// =======================
 
 let TOKEN = '';
 
@@ -129,8 +125,11 @@ async function doUpload() {
     log('📂 Читаю файл...');
     const base64 = await toBase64(file);
 
-    const audioPath = `audio/${date}.mp3`;
-    log(`⬆️ Загружаю аудио в ${audioPath}...`);
+    // Уникальная метка времени — чтобы несколько хутб в один день не конфликтовали
+    const ts = Date.now();
+    const audioPath = `audio/${date}_${ts}.mp3`;
+
+    log(`⬆️ Загружаю аудио...`);
     await githubPut(audioPath, base64, `Add audio ${date}`);
     log(`✅ Аудио загружено!`);
 
@@ -139,7 +138,7 @@ async function doUpload() {
     const jsonData = JSON.parse(atob(oldContent.replace(/\n/g,'')));
 
     const newEntry = {
-      id:           `khutba_${date.replace(/-/g,'')}`,
+      id:           `khutba_${date.replace(/-/g,'')}_${ts}`,
       date:         date,
       date_display: date.split('-').reverse().join('.'),
       title:        title,
@@ -155,8 +154,8 @@ async function doUpload() {
 
     log(`🎉 Готово! Хутба «${title}» добавлена.`, 'ok');
 
-    document.getElementById('title').value   = '';
-    document.getElementById('speaker').value = '';
+    document.getElementById('title').value    = '';
+    document.getElementById('speaker').value  = '';
     document.getElementById('audioFile').value = '';
     document.getElementById('fileName').textContent = 'Файл не выбран';
 
