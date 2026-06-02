@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Хутба — Админка</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 16px; }
+  .card { background: white; border-radius: 16px; padding: 32px; width: 100%; max-width: 480px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: #1a1a1a; }
+  label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; margin-top: 16px; }
+  input[type=text], input[type=date], input[type=password] { width: 100%; padding: 10px 14px; border: 1.5px solid #ddd; border-radius: 10px; font-size: 15px; outline: none; transition: border 0.2s; }
+  input:focus { border-color: #007AFF; }
+  .file-btn { display: block; width: 100%; padding: 10px 14px; border: 1.5px dashed #bbb; border-radius: 10px; font-size: 15px; color: #555; cursor: pointer; text-align: center; background: #fafafa; margin-top: 6px; }
+  .file-btn:hover { border-color: #007AFF; color: #007AFF; }
+  input[type=file] { display: none; }
+  .file-name { font-size: 13px; color: #007AFF; margin-top: 6px; min-height: 18px; }
+  .btn { width: 100%; margin-top: 24px; padding: 14px; background: #007AFF; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  .btn:hover { background: #0062cc; }
+  .btn:disabled { background: #aaa; cursor: not-allowed; }
+  .log { margin-top: 20px; background: #f0f0f0; border-radius: 10px; padding: 14px; font-size: 13px; color: #333; min-height: 48px; white-space: pre-wrap; line-height: 1.6; }
+  .ok  { color: #28a745; font-weight: 600; }
+  .err { color: #dc3545; font-weight: 600; }
+  #loginBox { }
+  #mainBox { display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- Экран входа -->
+  <div id="loginBox">
+    <h1>🔐 Вход</h1>
+    <label>Пароль</label>
+    <input type="password" id="passInput" placeholder="Введите пароль" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn" onclick="doLogin()">Войти</button>
+    <div class="log" id="loginLog"></div>
+  </div>
+
+  <!-- Основной экран -->
+  <div id="mainBox">
+    <h1>📋 Добавить хутбу</h1>
+
+    <label>Название хутбы</label>
+    <input type="text" id="title" placeholder="Например: О важности терпения">
+
+    <label>Дата</label>
+    <input type="date" id="date">
+
+    <label>Аудиофайл (MP3)</label>
+    <label class="file-btn" for="audioFile">📎 Выбрать файл</label>
+    <input type="file" id="audioFile" accept=".mp3,audio/*" onchange="onFileSelected()">
+    <div class="file-name" id="fileName">Файл не выбран</div>
+
+    <button class="btn" id="uploadBtn" onclick="doUpload()">⬆️ Загрузить</button>
+    <div class="log" id="uploadLog">Заполните поля и нажмите «Загрузить»</div>
+  </div>
+
+</div>
+
+<script>
+// ====== НАСТРОЙКИ (замени на свои) ======
+const GITHUB_OWNER = 'Tolik1661';
+const GITHUB_REPO  = 'khutba-data';
+const ADMIN_PASS   = 'namaz2026';        // пароль для входа в админку
+// ========================================
+
+let TOKEN = '';
+
+function doLogin() {
+  const pass = document.getElementById('passInput').value.trim();
+  const savedToken = localStorage.getItem('gh_token_' + GITHUB_REPO);
+
+  if (pass !== ADMIN_PASS) {
+    document.getElementById('loginLog').innerHTML = '<span class="err">Неверный пароль</span>';
+    return;
+  }
+
+  if (savedToken) {
+    TOKEN = savedToken;
+    showMain();
+    return;
+  }
+
+  const tok = prompt('Введите GitHub Token (ghp_...):');
+  if (!tok || !tok.startsWith('ghp_')) {
+    document.getElementById('loginLog').innerHTML = '<span class="err">Токен должен начинаться с ghp_</span>';
+    return;
+  }
+  TOKEN = tok.trim();
+  localStorage.setItem('gh_token_' + GITHUB_REPO, TOKEN);
+  showMain();
+}
+
+function showMain() {
+  document.getElementById('loginBox').style.display = 'none';
+  document.getElementById('mainBox').style.display  = 'block';
+  // Подставить сегодняшнюю дату
+  document.getElementById('date').value = new Date().toISOString().split('T')[0];
+}
+
+function onFileSelected() {
+  const f = document.getElementById('audioFile').files[0];
+  document.getElementById('fileName').textContent = f ? f.name : 'Файл не выбран';
+}
+
+function log(msg, cls) {
+  const el = document.getElementById('uploadLog');
+  el.innerHTML = cls ? `<span class="${cls}">${msg}</span>` : msg;
+}
+
+async function doUpload() {
+  const title  = document.getElementById('title').value.trim();
+  const date   = document.getElementById('date').value;
+  const file   = document.getElementById('audioFile').files[0];
+
+  if (!title) { log('⚠️ Введите название', 'err'); return; }
+  if (!date)  { log('⚠️ Выберите дату', 'err'); return; }
+  if (!file)  { log('⚠️ Выберите аудиофайл', 'err'); return; }
+
+  document.getElementById('uploadBtn').disabled = true;
+
+  try {
+    // 1. Читаем файл как base64
+    log('📂 Читаю файл...');
+    const base64 = await toBase64(file);
+
+    // 2. Загружаем MP3 в audio/
+    const audioPath = `audio/${date}.mp3`;
+    log(`⬆️ Загружаю аудио в ${audioPath}...`);
+    await githubPut(audioPath, base64, `Add audio ${date}`);
+    log(`✅ Аудио загружено!`);
+
+    // 3. Скачиваем текущий khutba.json
+    log('📥 Обновляю khutba.json...');
+    const { content: oldContent, sha } = await githubGet('khutba.json');
+    const jsonData = JSON.parse(atob(oldContent.replace(/\n/g,'')));
+
+    // 4. Добавляем запись
+    const newEntry = {
+      id:           `khutba_${date.replace(/-/g,'')}`,
+      date:         date,
+      date_display: date.split('-').reverse().join('.'),
+      title:        title,
+      audio_url:    `https://${GITHUB_OWNER}.github.io/${GITHUB_REPO}/${audioPath}`,
+      duration:     0
+    };
+    jsonData.khutba.unshift(newEntry);
+    jsonData.last_updated = new Date().toISOString();
+
+    // 5. Загружаем обновлённый JSON
+    const newBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(jsonData, null, 2))));
+    await githubPut('khutba.json', newBase64, `Add khutba ${date}: ${title}`, sha);
+
+    log(`🎉 Готово! Хутба «${title}» добавлена.`, 'ok');
+
+    // Сбрасываем форму
+    document.getElementById('title').value = '';
+    document.getElementById('audioFile').value = '';
+    document.getElementById('fileName').textContent = 'Файл не выбран';
+
+  } catch(e) {
+    log(`❌ Ошибка: ${e.message}`, 'err');
+  }
+
+  document.getElementById('uploadBtn').disabled = false;
+}
+
+function toBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload  = () => res(r.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+
+async function githubGet(path) {
+  const resp = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
+    headers: { Authorization: `token ${TOKEN}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (!resp.ok) throw new Error(`GET ${path}: ${resp.status}`);
+  return resp.json();
+}
+
+async function githubPut(path, base64content, message, sha) {
+  const body = { message, content: base64content };
+  if (sha) body.sha = sha;
+  const resp = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
+    method:  'PUT',
+    headers: { Authorization: `token ${TOKEN}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body:    JSON.stringify(body)
+  });
+  if (!resp.ok) {
+    const err = await resp.json();
+    throw new Error(err.message || resp.status);
+  }
+  return resp.json();
+}
+</script>
+</body>
+</html>
