@@ -1,12 +1,21 @@
 {
-  "last_updated": "2026-06-02T11:52:29.672Z",
+  "last_updated": "2026-06-07T12:00:23.544Z",
   "khutba": [
+    {
+      "id": "khutba_20260508_1780833616045",
+      "date": "2026-05-08",
+      "date_display": "08.05.2026",
+      "title": "КъыдгурымыIуэр нэхъыбэщ",
+      "speaker": "Щхьэныкъуэ Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-05-08_1780833616045.mp3",
+      "duration": 0
+    },
     {
       "id": "khutba_20260602",
       "date": "2026-06-02",
       "date_display": "02.06.2026",
-      "title": "Тестовая хутба",
-      "speaker": "Тест Тестов",
+      "title": "Ð¢ÐµÑÑÐ¾Ð²Ð°Ñ ÑÑÑÐ±Ð°",
+      "speaker": "Ð¢ÐµÑÑ Ð¢ÐµÑÑÐ¾Ð²",
       "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-06-02.mp3",
       "duration": 0
     }
