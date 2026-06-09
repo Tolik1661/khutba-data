@@ -1,83 +1,180 @@
+$ cat /tmp/admin_new.html
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Хутба — Админка</title>
+<title>Знания — Админка</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 16px; }
-  .card { background: white; border-radius: 16px; padding: 32px; width: 100%; max-width: 480px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
-  h1 { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: #1a1a1a; }
-  label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; margin-top: 16px; }
-  input[type=text], input[type=date], input[type=password] { width: 100%; padding: 10px 14px; border: 1.5px solid #ddd; border-radius: 10px; font-size: 15px; outline: none; transition: border 0.2s; }
-  input:focus { border-color: #007AFF; }
-  .file-btn { display: block; width: 100%; padding: 10px 14px; border: 1.5px dashed #bbb; border-radius: 10px; font-size: 15px; color: #555; cursor: pointer; text-align: center; background: #fafafa; margin-top: 6px; }
-  .file-btn:hover { border-color: #007AFF; color: #007AFF; }
-  input[type=file] { display: none; }
-  .file-name { font-size: 13px; color: #007AFF; margin-top: 6px; min-height: 18px; }
-  .btn { width: 100%; margin-top: 24px; padding: 14px; background: #007AFF; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
-  .btn:hover { background: #0062cc; }
-  .btn:disabled { background: #aaa; cursor: not-allowed; }
-  .log { margin-top: 20px; background: #f0f0f0; border-radius: 10px; padding: 14px; font-size: 13px; color: #333; min-height: 48px; white-space: pre-wrap; line-height: 1.6; }
-  .ok  { color: #28a745; font-weight: 600; }
-  .err { color: #dc3545; font-weight: 600; }
-  #loginBox { }
-  #mainBox { display: none; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, sans-serif; background: #f2f2f7; min-height: 100vh; }
+.container { max-width: 680px; margin: 0 auto; padding: 24px 16px 60px; }
+h1 { font-size: 24px; font-weight: 700; color: #1c1c1e; margin-bottom: 20px; }
+h2 { font-size: 15px; font-weight: 600; color: #6e6e73; text-transform: uppercase; letter-spacing: .5px; margin: 24px 0 10px; }
+
+/* Карточки */
+.card { background: #fff; border-radius: 14px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+
+/* Поля ввода */
+label { display: block; font-size: 13px; font-weight: 600; color: #6e6e73; margin-bottom: 5px; margin-top: 14px; }
+label:first-of-type { margin-top: 0; }
+input[type=text], input[type=date], input[type=password] {
+  width: 100%; padding: 10px 13px; border: 1.5px solid #e0e0e5;
+  border-radius: 10px; font-size: 15px; outline: none; transition: border .2s;
+}
+input:focus { border-color: #007AFF; }
+
+/* Сегментированный контрол */
+.seg { display: flex; background: #e9e9ee; border-radius: 10px; padding: 3px; margin-bottom: 4px; }
+.seg button {
+  flex: 1; padding: 7px; border: none; background: transparent;
+  border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+  color: #6e6e73; transition: all .2s;
+}
+.seg button.active { background: #fff; color: #1c1c1e; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+
+/* Кнопки */
+.btn-primary {
+  width: 100%; margin-top: 18px; padding: 13px;
+  background: #007AFF; color: #fff; border: none;
+  border-radius: 12px; font-size: 16px; font-weight: 600;
+  cursor: pointer; transition: background .2s;
+}
+.btn-primary:hover { background: #0062cc; }
+.btn-primary:disabled { background: #b0b0b5; cursor: not-allowed; }
+
+/* Файл */
+.file-btn {
+  display: block; width: 100%; padding: 10px 13px;
+  border: 1.5px dashed #b0b0b5; border-radius: 10px;
+  font-size: 15px; color: #6e6e73; cursor: pointer;
+  text-align: center; background: #fafafa; margin-top: 5px;
+}
+.file-btn:hover { border-color: #007AFF; color: #007AFF; }
+input[type=file] { display: none; }
+.file-name { font-size: 13px; color: #007AFF; margin-top: 5px; min-height: 18px; }
+
+/* Лог */
+.log { margin-top: 14px; background: #f2f2f7; border-radius: 10px; padding: 12px; font-size: 13px; min-height: 42px; white-space: pre-wrap; line-height: 1.6; }
+.ok  { color: #28a745; font-weight: 600; }
+.err { color: #dc3545; font-weight: 600; }
+
+/* Список */
+.item-row {
+  border-bottom: 1px solid #f0f0f5; padding: 12px 0;
+}
+.item-row:last-child { border-bottom: none; }
+.item-meta { display: flex; align-items: flex-start; gap: 10px; }
+.item-info { flex: 1; }
+.item-title { font-size: 15px; font-weight: 600; color: #1c1c1e; }
+.item-sub { font-size: 13px; color: #6e6e73; margin-top: 3px; }
+.item-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.btn-edit, .btn-del {
+  padding: 5px 12px; border-radius: 8px; font-size: 13px;
+  font-weight: 600; border: none; cursor: pointer;
+}
+.btn-edit { background: #e8f0fe; color: #007AFF; }
+.btn-del  { background: #fde8e8; color: #dc3545; }
+.btn-edit:hover { background: #d0e4ff; }
+.btn-del:hover  { background: #fac5c5; }
+
+/* Форма редактирования */
+.edit-form {
+  background: #f8f8fc; border-radius: 10px; padding: 14px;
+  margin-top: 10px; border: 1.5px solid #e0e0e8;
+}
+.edit-form input { margin-bottom: 8px; }
+.edit-btns { display: flex; gap: 8px; margin-top: 10px; }
+.btn-save { flex: 1; padding: 9px; background: #34c759; color: #fff; border: none; border-radius: 9px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-cancel { flex: 1; padding: 9px; background: #e0e0e8; color: #3a3a3c; border: none; border-radius: 9px; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+.empty { text-align: center; color: #b0b0b5; padding: 30px 0; font-size: 15px; }
+
+#loginBox, #mainBox { }
+#mainBox { display: none; }
 </style>
 </head>
 <body>
-<div class="card">
+<div class="container">
 
+  <!-- ── Экран входа ── -->
   <div id="loginBox">
-    <h1>🔐 Вход</h1>
-    <label>Пароль</label>
-    <input type="password" id="passInput" placeholder="Введите пароль" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="btn" onclick="doLogin()">Войти</button>
-    <div class="log" id="loginLog"></div>
+    <h1>🔐 Знания — Вход</h1>
+    <div class="card">
+      <label>Пароль</label>
+      <input type="password" id="passInput" placeholder="Введите пароль"
+             onkeydown="if(event.key==='Enter') doLogin()">
+      <button class="btn-primary" onclick="doLogin()">Войти</button>
+      <div class="log" id="loginLog"></div>
+    </div>
   </div>
 
+  <!-- ── Основной экран ── -->
   <div id="mainBox">
-    <h1>📋 Добавить хутбу</h1>
+    <h1>📚 Знания</h1>
 
-    <label>Название хутбы</label>
-    <input type="text" id="title" placeholder="Например: О важности терпения">
+    <!-- Переключатель вкладок -->
+    <div class="seg" id="tabSeg">
+      <button class="active" onclick="switchTab('khutba',this)">Хутбы</button>
+      <button onclick="switchTab('lectures',this)">Лекции</button>
+    </div>
 
-    <label>Спикер (имя автора)</label>
-    <input type="text" id="speaker" placeholder="Например: Шхануков Анзор">
+    <!-- Форма добавления -->
+    <h2>Добавить</h2>
+    <div class="card">
+      <label>Название</label>
+      <input type="text" id="title" placeholder="Например: О важности терпения">
 
-    <label>Дата</label>
-    <input type="date" id="date">
+      <label>Спикер</label>
+      <input type="text" id="speaker" placeholder="Например: Шхануков Анзор">
 
-    <label>Аудиофайл (MP3)</label>
-    <label class="file-btn" for="audioFile">📎 Выбрать файл</label>
-    <input type="file" id="audioFile" accept=".mp3,audio/*" onchange="onFileSelected()">
-    <div class="file-name" id="fileName">Файл не выбран</div>
+      <label>Дата</label>
+      <input type="date" id="date">
 
-    <button class="btn" id="uploadBtn" onclick="doUpload()">⬆️ Загрузить</button>
-    <div class="log" id="uploadLog">Заполните поля и нажмите «Загрузить»</div>
+      <label>Аудиофайл (MP3)</label>
+      <label class="file-btn" for="audioFile">📎 Выбрать файл</label>
+      <input type="file" id="audioFile" accept=".mp3,audio/*" onchange="onFileSelected()">
+      <div class="file-name" id="fileName">Файл не выбран</div>
+
+      <button class="btn-primary" id="uploadBtn" onclick="doUpload()">⬆️ Загрузить</button>
+      <div class="log" id="uploadLog">Заполните поля и нажмите «Загрузить»</div>
+    </div>
+
+    <!-- Список -->
+    <h2 id="listTitle">Список хутб</h2>
+    <div class="card" id="listContainer">
+      <div class="empty">Загрузка...</div>
+    </div>
+
   </div>
-
 </div>
 
 <script>
+// ── Настройки ──────────────────────────────────────────────────────────
 const GITHUB_OWNER = 'Tolik1661';
 const GITHUB_REPO  = 'khutba-data';
 const ADMIN_PASS   = 'namaz2026';
+// ──────────────────────────────────────────────────────────────────────
 
-let TOKEN = '';
+let TOKEN       = '';
+let currentTab  = 'khutba';  // 'khutba' | 'lectures'
+let jsonData    = null;       // полный объект из khutba.json
+let editingId   = null;       // ID записи в режиме редактирования
+
+// ── Вход ───────────────────────────────────────────────────────────────
 
 function doLogin() {
   const pass = document.getElementById('passInput').value.trim();
-  const savedToken = localStorage.getItem('gh_token_' + GITHUB_REPO);
+  const saved = localStorage.getItem('gh_token_' + GITHUB_REPO);
 
   if (pass !== ADMIN_PASS) {
     document.getElementById('loginLog').innerHTML = '<span class="err">Неверный пароль</span>';
     return;
   }
 
-  if (savedToken) {
-    TOKEN = savedToken;
+  if (saved) {
+    TOKEN = saved;
     showMain();
     return;
   }
@@ -92,11 +189,150 @@ function doLogin() {
   showMain();
 }
 
-function showMain() {
+async function showMain() {
   document.getElementById('loginBox').style.display = 'none';
   document.getElementById('mainBox').style.display  = 'block';
   document.getElementById('date').value = new Date().toISOString().split('T')[0];
+  await loadJsonData();
+  renderList();
 }
+
+// ── Вкладки ────────────────────────────────────────────────────────────
+
+function switchTab(tab, btn) {
+  currentTab = tab;
+  document.querySelectorAll('#tabSeg button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('listTitle').textContent =
+    tab === 'khutba' ? 'Список хутб' : 'Список лекций';
+  editingId = null;
+  renderList();
+}
+
+// ── Загрузка JSON ──────────────────────────────────────────────────────
+
+async function loadJsonData() {
+  try {
+    const res = await githubGet('khutba.json');
+    const raw = atob(res.content.replace(/\n/g, ''));
+    jsonData  = JSON.parse(raw);
+    if (!jsonData.lectures) jsonData.lectures = []; // поддержка старого формата
+  } catch (e) {
+    jsonData = { last_updated: new Date().toISOString(), khutba: [], lectures: [] };
+  }
+}
+
+// ── Рендер списка ──────────────────────────────────────────────────────
+
+function renderList() {
+  const container = document.getElementById('listContainer');
+  if (!jsonData) { container.innerHTML = '<div class="empty">Загрузка...</div>'; return; }
+
+  const items = (currentTab === 'khutba' ? jsonData.khutba : jsonData.lectures) || [];
+  const sorted = [...items].sort((a, b) => b.date.localeCompare(a.date));
+
+  if (!sorted.length) {
+    container.innerHTML = `<div class="empty">${currentTab === 'khutba' ? 'Хутб пока нет' : 'Лекций пока нет'}</div>`;
+    return;
+  }
+
+  container.innerHTML = sorted.map(item => `
+    <div class="item-row" id="row_${item.id}">
+      <div class="item-meta">
+        <div class="item-info">
+          <div class="item-title">${escHtml(item.title)}</div>
+          <div class="item-sub">${escHtml(item.speaker)} · ${formatDate(item.date)}</div>
+        </div>
+        <div class="item-actions">
+          <button class="btn-edit" onclick="toggleEdit('${item.id}')">✏️ Изм.</button>
+          <button class="btn-del"  onclick="deleteItem('${item.id}')">🗑</button>
+        </div>
+      </div>
+      <div class="edit-form" id="edit_${item.id}" style="display:none">
+        <label>Название</label>
+        <input type="text" id="et_${item.id}" value="${escHtml(item.title)}">
+        <label>Спикер</label>
+        <input type="text" id="es_${item.id}" value="${escHtml(item.speaker)}">
+        <label>Дата</label>
+        <input type="date" id="ed_${item.id}" value="${item.date}">
+        <div class="edit-btns">
+          <button class="btn-save"   onclick="saveEdit('${item.id}')">Сохранить</button>
+          <button class="btn-cancel" onclick="toggleEdit('${item.id}')">Отмена</button>
+        </div>
+        <div class="log" id="editlog_${item.id}"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleEdit(id) {
+  const el = document.getElementById(`edit_${id}`);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function formatDate(d) {
+  if (!d) return '';
+  const [y, m, day] = d.split('-');
+  return `${day}.${m}.${y}`;
+}
+
+function escHtml(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Редактирование ─────────────────────────────────────────────────────
+
+async function saveEdit(id) {
+  const title   = document.getElementById(`et_${id}`).value.trim();
+  const speaker = document.getElementById(`es_${id}`).value.trim();
+  const date    = document.getElementById(`ed_${id}`).value;
+  const logEl   = document.getElementById(`editlog_${id}`);
+
+  if (!title || !speaker || !date) { logEl.innerHTML = '<span class="err">Заполни все поля</span>'; return; }
+
+  const arr = currentTab === 'khutba' ? jsonData.khutba : jsonData.lectures;
+  const idx = arr.findIndex(i => i.id === id);
+  if (idx < 0) { logEl.innerHTML = '<span class="err">Запись не найдена</span>'; return; }
+
+  // Обновляем поля
+  arr[idx] = { ...arr[idx], title, speaker, date,
+    date_display: formatDate(date) };
+  jsonData.last_updated = new Date().toISOString();
+
+  logEl.textContent = 'Сохраняю...';
+  try {
+    await saveJsonData();
+    logEl.innerHTML = '<span class="ok">Сохранено!</span>';
+    renderList();
+  } catch (e) {
+    logEl.innerHTML = `<span class="err">Ошибка: ${e.message}</span>`;
+  }
+}
+
+// ── Удаление ───────────────────────────────────────────────────────────
+
+async function deleteItem(id) {
+  const arr  = currentTab === 'khutba' ? jsonData.khutba : jsonData.lectures;
+  const item = arr.find(i => i.id === id);
+  if (!item) return;
+
+  if (!confirm(`Удалить "${item.title}"?\n\nАудиофайл на сервере останется.`)) return;
+
+  const key = currentTab === 'khutba' ? 'khutba' : 'lectures';
+  jsonData[key] = jsonData[key].filter(i => i.id !== id);
+  jsonData.last_updated = new Date().toISOString();
+
+  try {
+    await saveJsonData();
+    renderList();
+  } catch (e) {
+    alert('Ошибка удаления: ' + e.message);
+    await loadJsonData(); // откатываем
+    renderList();
+  }
+}
+
+// ── Добавление ─────────────────────────────────────────────────────────
 
 function onFileSelected() {
   const f = document.getElementById('audioFile').files[0];
@@ -115,9 +351,9 @@ async function doUpload() {
   const file    = document.getElementById('audioFile').files[0];
 
   if (!title)   { log('⚠️ Введите название', 'err'); return; }
-  if (!speaker) { log('⚠️ Введите имя спикера', 'err'); return; }
-  if (!date)    { log('⚠️ Выберите дату', 'err'); return; }
-  if (!file)    { log('⚠️ Выберите аудиофайл', 'err'); return; }
+  if (!speaker) { log('⚠️ Введите спикера',  'err'); return; }
+  if (!date)    { log('⚠️ Выберите дату',    'err'); return; }
+  if (!file)    { log('⚠️ Выберите файл',    'err'); return; }
 
   document.getElementById('uploadBtn').disabled = true;
 
@@ -125,46 +361,57 @@ async function doUpload() {
     log('📂 Читаю файл...');
     const base64 = await toBase64(file);
 
-    // Уникальная метка времени — чтобы несколько хутб в один день не конфликтовали
-    const ts = Date.now();
+    const ts        = Date.now();
     const audioPath = `audio/${date}_${ts}.mp3`;
 
     log(`⬆️ Загружаю аудио...`);
     await githubPut(audioPath, base64, `Add audio ${date}`);
-    log(`✅ Аудио загружено!`);
 
-    log('📥 Обновляю khutba.json...');
-    const { content: oldContent, sha } = await githubGet('khutba.json');
-    const jsonData = JSON.parse(atob(oldContent.replace(/\n/g,'')));
+    log('📥 Обновляю базу...');
+    await loadJsonData(); // свежий SHA
 
-    const newEntry = {
-      id:           `khutba_${date.replace(/-/g,'')}_${ts}`,
-      date:         date,
-      date_display: date.split('-').reverse().join('.'),
-      title:        title,
-      speaker:      speaker,
+    const newItem = {
+      id:           `${currentTab === 'khutba' ? 'khutba' : 'lecture'}_${date.replace(/-/g,'')}_${ts}`,
+      date,
+      date_display: formatDate(date),
+      title,
+      speaker,
       audio_url:    `https://${GITHUB_OWNER}.github.io/${GITHUB_REPO}/${audioPath}`,
       duration:     0
     };
-    jsonData.khutba.unshift(newEntry);
+
+    const key = currentTab === 'khutba' ? 'khutba' : 'lectures';
+    jsonData[key].unshift(newItem);
     jsonData.last_updated = new Date().toISOString();
 
-    const newBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(jsonData, null, 2))));
-    await githubPut('khutba.json', newBase64, `Add khutba ${date}: ${title}`, sha);
+    await saveJsonData();
 
-    log(`🎉 Готово! Хутба «${title}» добавлена.`, 'ok');
+    log(`🎉 Готово! «${title}» добавлена в раздел ${currentTab === 'khutba' ? 'Хутбы' : 'Лекции'}.`, 'ok');
 
+    // Очищаем форму
     document.getElementById('title').value    = '';
     document.getElementById('speaker').value  = '';
     document.getElementById('audioFile').value = '';
     document.getElementById('fileName').textContent = 'Файл не выбран';
 
-  } catch(e) {
+    renderList();
+
+  } catch (e) {
     log(`❌ Ошибка: ${e.message}`, 'err');
   }
 
   document.getElementById('uploadBtn').disabled = false;
 }
+
+// ── Сохранение JSON на GitHub ──────────────────────────────────────────
+
+async function saveJsonData() {
+  const { sha }   = await githubGet('khutba.json');
+  const newBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(jsonData, null, 2))));
+  await githubPut('khutba.json', newBase64, `Update content`, sha);
+}
+
+// ── GitHub API ─────────────────────────────────────────────────────────
 
 function toBase64(file) {
   return new Promise((res, rej) => {
@@ -176,23 +423,27 @@ function toBase64(file) {
 }
 
 async function githubGet(path) {
-  const resp = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
-    headers: { Authorization: `token ${TOKEN}`, Accept: 'application/vnd.github.v3+json' }
-  });
+  const resp = await fetch(
+    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`,
+    { headers: { Authorization: `token ${TOKEN}`, Accept: 'application/vnd.github.v3+json' } }
+  );
   if (!resp.ok) throw new Error(`GET ${path}: ${resp.status}`);
   return resp.json();
 }
 
-async function githubPut(path, base64content, message, sha) {
-  const body = { message, content: base64content };
+async function githubPut(path, content, message, sha) {
+  const body = { message, content };
   if (sha) body.sha = sha;
-  const resp = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
-    method:  'PUT',
-    headers: { Authorization: `token ${TOKEN}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-    body:    JSON.stringify(body)
-  });
+  const resp = await fetch(
+    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`,
+    {
+      method:  'PUT',
+      headers: { Authorization: `token ${TOKEN}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body:    JSON.stringify(body)
+    }
+  );
   if (!resp.ok) {
-    const err = await resp.json();
+    const err = await resp.json().catch(() => ({}));
     throw new Error(err.message || resp.status);
   }
   return resp.json();
