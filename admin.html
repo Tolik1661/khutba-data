@@ -213,9 +213,12 @@ function switchTab(tab, btn) {
 
 async function loadJsonData() {
   try {
-    const res = await githubGet('khutba.json');
-    const raw = atob(res.content.replace(/\n/g, ''));
-    jsonData  = JSON.parse(raw);
+    const res    = await githubGet('khutba.json');
+    // Правильное декодирование UTF-8 из base64
+    const binary = atob(res.content.replace(/\n/g, ''));
+    const uint8  = Uint8Array.from(binary, c => c.charCodeAt(0));
+    const raw    = new TextDecoder('utf-8').decode(uint8);
+    jsonData     = JSON.parse(raw);
     if (!jsonData.lectures) jsonData.lectures = []; // поддержка старого формата
   } catch (e) {
     jsonData = { last_updated: new Date().toISOString(), khutba: [], lectures: [] };
