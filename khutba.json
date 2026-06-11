@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-11T11:09:46.274Z",
+  "last_updated": "2026-06-11T11:11:48.773Z",
   "khutba": [
     {
       "id": "khutba_20260605_1781176165933",
@@ -21,6 +21,15 @@
     }
   ],
   "lectures": [
+    {
+      "id": "lecture_20250613_1781176305938",
+      "date": "2025-06-13",
+      "date_display": "13.06.2025",
+      "title": "О величии знаний",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-06-13_1781176305938.mp3",
+      "duration": 0
+    },
     {
       "id": "lecture_20260310_1781169002368",
       "date": "2026-03-10",
