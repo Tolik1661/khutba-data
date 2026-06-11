@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-11T11:11:48.773Z",
+  "last_updated": "2026-06-11T11:13:27.424Z",
   "khutba": [
     {
       "id": "khutba_20260605_1781176165933",
@@ -21,6 +21,15 @@
     }
   ],
   "lectures": [
+    {
+      "id": "lecture_20260405_1781176403033",
+      "date": "2026-04-05",
+      "date_display": "05.04.2026",
+      "title": "Нэмэзым куэд елъытащ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-04-05_1781176403033.mp3",
+      "duration": 0
+    },
     {
       "id": "lecture_20250613_1781176305938",
       "date": "2025-06-13",
