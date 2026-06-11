@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-09T09:00:00.000Z",
+  "last_updated": "2026-06-11T09:10:13.992Z",
   "khutba": [
     {
       "id": "khutba_20260508_1780833616045",
@@ -11,5 +11,15 @@
       "duration": 0
     }
   ],
-  "lectures": []
+  "lectures": [
+    {
+      "id": "lecture_20260310_1781169002368",
+      "date": "2026-03-10",
+      "date_display": "10.03.2026",
+      "title": "Несправедливость мужа по отношению к жене",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-03-10_1781169002368.mp3",
+      "duration": 0
+    }
+  ]
 }
