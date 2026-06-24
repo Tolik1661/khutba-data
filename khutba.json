@@ -1,0 +1,178 @@
+{
+  "last_updated": "2026-06-24T21:32:25.788Z",
+  "khutba": [
+    {
+      "id": "khutba_20251203_1782336687510",
+      "date": "2025-12-03",
+      "date_display": "03.12.2025",
+      "title": "Каждый из вас пастырь",
+      "speaker": "Азамат абу Айман",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-12-03_1782336687510.mp3",
+      "duration": 0
+    },
+    {
+      "id": "khutba_20251107_1782335725902",
+      "date": "2025-11-07",
+      "date_display": "07.11.2025",
+      "title": "Лӏыгъэмрэ, къалэнхэмрэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-11-07_1782335725902.mp3",
+      "duration": 0
+    },
+    {
+      "id": "khutba_20260619_1782335596767",
+      "date": "2026-06-19",
+      "date_display": "19.06.2026",
+      "title": "Гъэ блэкIамрэ къэунэхуамрэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-06-19_1782335596767.mp3",
+      "duration": 0
+    },
+    {
+      "id": "khutba_20260605_1781176165933",
+      "date": "2026-06-05",
+      "date_display": "05.06.2026",
+      "title": "Отчитывай себя, пока тебя не отчитали",
+      "speaker": "Азамат абу Айман",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-06-05_1781176165933.mp3",
+      "duration": 0
+    },
+    {
+      "id": "khutba_20260508_1780833616045",
+      "date": "2026-05-08",
+      "date_display": "08.05.2026",
+      "title": "КъыдгурымыIуэр нэхъыбэщ",
+      "speaker": "Щхьэныкъуэ Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-05-08_1780833616045.mp3",
+      "duration": 0
+    }
+  ],
+  "lectures": [
+    {
+      "id": "lecture_20210723_1782336268538",
+      "date": "2021-07-23",
+      "date_display": "23.07.2021",
+      "title": "Дыгъэм и гуащIагъыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2021-07-23_1782336268538.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20251113_1782336089833",
+      "date": "2025-11-13",
+      "date_display": "13.11.2025",
+      "title": "Хьэл-щэным теухуауэ дерсхэр – «Унэм ехьэлIа Iэдэбагъхэр»",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-11-13_1782336089833.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20260622_1782335967547",
+      "date": "2026-06-22",
+      "date_display": "22.06.2026",
+      "title": "Тхьэшынагъэмрэ пэжагъымрэ я щапхъэ унагъуэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-06-22_1782335967547.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20260622_1782335888932",
+      "date": "2026-06-22",
+      "date_display": "22.06.2026",
+      "title": "Зэмыфэгъум и щапхъэ зыбжанэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-06-22_1782335888932.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20220524_1782335469456",
+      "date": "2022-05-24",
+      "date_display": "24.05.2022",
+      "title": "«Покровительство Аллаха достигается только верой и правильными деяниями». Полезный фрагмент из уроков по вероубеждению",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2022-05-24_1782335469456.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20220630_1782335403178",
+      "date": "2022-06-30",
+      "date_display": "30.06.2022",
+      "title": "Полезный фрагмент из урока по книге «аль-Фауаид» ибн аль-Къаййима, да смилуется над ним Аллах, интеллект-клуба «Райхан».",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2022-06-30_1782335403178.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20251215_1782335304349",
+      "date": "2025-12-15",
+      "date_display": "15.12.2025",
+      "title": "Дозволено ли мужу говорить жене: «Тебе дают детские пособия» и из-за этого не обеспечивать её самым необходимым?",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-12-15_1782335304349.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20260121_1782335230351",
+      "date": "2026-01-21",
+      "date_display": "21.01.2026",
+      "title": "«О поездках на соревнования по запретным видам спорта в исламе»",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-01-21_1782335230351.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20260228_1782335134047",
+      "date": "2026-02-28",
+      "date_display": "28.02.2026",
+      "title": "Нахождение мусульман в запретных местах и заведениях",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-02-28_1782335134047.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20260503_1782335065202",
+      "date": "2026-05-03",
+      "date_display": "03.05.2026",
+      "title": "Можно ли брать оплату за аренду в процентах с прибыли?",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-05-03_1782335065202.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20250702_1782334966385",
+      "date": "2025-07-02",
+      "date_display": "02.07.2025",
+      "title": "Пост в день Ашура",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-07-02_1782334966385.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20260405_1781176403033",
+      "date": "2026-04-05",
+      "date_display": "05.04.2026",
+      "title": "Нэмэзым куэд елъытащ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-04-05_1781176403033.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20250613_1781176305938",
+      "date": "2025-06-13",
+      "date_display": "13.06.2025",
+      "title": "О величии знаний",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-06-13_1781176305938.mp3",
+      "duration": 0
+    },
+    {
+      "id": "lecture_20260310_1781169002368",
+      "date": "2026-03-10",
+      "date_display": "10.03.2026",
+      "title": "Несправедливость мужа по отношению к жене",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-03-10_1781169002368.mp3",
+      "duration": 0
+    }
+  ]
+}
