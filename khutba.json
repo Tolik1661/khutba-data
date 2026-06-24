@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-24T21:21:41.130Z",
+  "last_updated": "2026-06-24T21:24:38.033Z",
   "khutba": [
     {
       "id": "khutba_20251107_1782335725902",
@@ -39,6 +39,15 @@
     }
   ],
   "lectures": [
+    {
+      "id": "lecture_20210723_1782336268538",
+      "date": "2021-07-23",
+      "date_display": "23.07.2021",
+      "title": "Дыгъэм и гуащIагъыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2021-07-23_1782336268538.mp3",
+      "duration": 0
+    },
     {
       "id": "lecture_20251113_1782336089833",
       "date": "2025-11-13",
