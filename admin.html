@@ -154,7 +154,8 @@ input[type=file] { display: none; }
 // ── Настройки ──────────────────────────────────────────────────────────
 const GITHUB_OWNER = 'Tolik1661';
 const GITHUB_REPO  = 'khutba-data';
-const ADMIN_PASS   = 'namaz2026';
+// SHA-256 хэш пароля — сам пароль в публичном исходнике не хранится
+const ADMIN_PASS_SHA256 = '381db82f19f15a029f120a1f4aec6efa011bcfaa810582f9b5782b4785f31276';
 // ──────────────────────────────────────────────────────────────────────
 
 let TOKEN       = '';
@@ -164,11 +165,16 @@ let editingId   = null;       // ID записи в режиме редакти�
 
 // ── Вход ───────────────────────────────────────────────────────────────
 
-function doLogin() {
+async function sha256Hex(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function doLogin() {
   const pass = document.getElementById('passInput').value.trim();
   const saved = localStorage.getItem('gh_token_' + GITHUB_REPO);
 
-  if (pass !== ADMIN_PASS) {
+  if (await sha256Hex(pass) !== ADMIN_PASS_SHA256) {
     document.getElementById('loginLog').innerHTML = '<span class="err">Неверный пароль</span>';
     return;
   }
@@ -179,9 +185,10 @@ function doLogin() {
     return;
   }
 
-  const tok = prompt('Введите GitHub Token (ghp_...):');
-  if (!tok || !tok.startsWith('ghp_')) {
-    document.getElementById('loginLog').innerHTML = '<span class="err">Токен должен начинаться с ghp_</span>';
+  // Совет: используйте fine-grained token с доступом только к khutba-data
+  const tok = prompt('Введите GitHub Token (ghp_... или github_pat_...):');
+  if (!tok || !(tok.startsWith('ghp_') || tok.startsWith('github_pat_'))) {
+    document.getElementById('loginLog').innerHTML = '<span class="err">Токен должен начинаться с ghp_ или github_pat_</span>';
     return;
   }
   TOKEN = tok.trim();
@@ -239,33 +246,35 @@ function renderList() {
     return;
   }
 
-  container.innerHTML = sorted.map(item => `
-    <div class="item-row" id="row_${item.id}">
+  container.innerHTML = sorted.map(item => {
+    const sid = String(item.id || '').replace(/[^\w-]/g, '');
+    return `
+    <div class="item-row" id="row_${sid}">
       <div class="item-meta">
         <div class="item-info">
           <div class="item-title">${escHtml(item.title)}</div>
           <div class="item-sub">${escHtml(item.speaker)} · ${formatDate(item.date)}</div>
         </div>
         <div class="item-actions">
-          <button class="btn-edit" onclick="toggleEdit('${item.id}')">✏️ Изм.</button>
-          <button class="btn-del"  onclick="deleteItem('${item.id}')">🗑</button>
+          <button class="btn-edit" onclick="toggleEdit('${sid}')">✏️ Изм.</button>
+          <button class="btn-del"  onclick="deleteItem('${sid}')">🗑</button>
         </div>
       </div>
-      <div class="edit-form" id="edit_${item.id}" style="display:none">
+      <div class="edit-form" id="edit_${sid}" style="display:none">
         <label>Название</label>
-        <input type="text" id="et_${item.id}" value="${escHtml(item.title)}">
+        <input type="text" id="et_${sid}" value="${escHtml(item.title)}">
         <label>Спикер</label>
-        <input type="text" id="es_${item.id}" value="${escHtml(item.speaker)}">
+        <input type="text" id="es_${sid}" value="${escHtml(item.speaker)}">
         <label>Дата</label>
-        <input type="date" id="ed_${item.id}" value="${item.date}">
+        <input type="date" id="ed_${sid}" value="${escHtml(item.date)}">
         <div class="edit-btns">
-          <button class="btn-save"   onclick="saveEdit('${item.id}')">Сохранить</button>
-          <button class="btn-cancel" onclick="toggleEdit('${item.id}')">Отмена</button>
+          <button class="btn-save"   onclick="saveEdit('${sid}')">Сохранить</button>
+          <button class="btn-cancel" onclick="toggleEdit('${sid}')">Отмена</button>
         </div>
-        <div class="log" id="editlog_${item.id}"></div>
+        <div class="log" id="editlog_${sid}"></div>
       </div>
     </div>
-  `).join('');
+  `; }).join('');
 }
 
 function toggleEdit(id) {
