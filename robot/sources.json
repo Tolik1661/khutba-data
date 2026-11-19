@@ -9,7 +9,7 @@
       "default_kind": "lecture",
       "auto_publish": false,
       "backfill": 30,
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "shkhanukov",
@@ -20,7 +20,7 @@
       "default_kind": "lecture",
       "auto_publish": false,
       "backfill": 30,
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "shkhanukov_youtube",
@@ -31,7 +31,18 @@
       "default_kind": "lecture",
       "auto_publish": false,
       "backfill": 5,
-      "enabled": false
+      "enabled": true
+    },
+    {
+      "id": "abu_islam_youtube",
+      "title": "YouTube: Абу Ислам аш-Шаркаси",
+      "type": "youtube",
+      "channel_id": "UC9DqyNCy7SHE5VO8Clz_ekA",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "default_kind": "lecture",
+      "auto_publish": false,
+      "backfill": 5,
+      "enabled": true
     }
   ]
 }
