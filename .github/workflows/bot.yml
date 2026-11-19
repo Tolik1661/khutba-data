@@ -1,0 +1,38 @@
+# Telegram-бот админки: раз в 5 минут забирает нажатия кнопок и сообщения,
+# применяет их (публикация, правка, удаление) и коммитит результат.
+name: Bot — Telegram admin
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write    # правки khutba.json, drafts.json, sources.json
+  actions: write     # команда /run запускает робота
+
+# Один экземпляр за раз: два бота одновременно забрали бы одни и те же события
+concurrency:
+  group: khutba-data-bot
+  cancel-in-progress: false
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      # Без аудио: боту нужны только json-файлы и папка robot, так запуск занимает секунды
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262   # v4 (v4.4.0)
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: robot
+
+      # Если были события, бот остаётся на связи ещё 3 минуты после последнего:
+      # правка идёт диалогом, и отвечать на неё нужно сразу
+      - name: Handle Telegram updates
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_ADMIN_CHAT_IDS: ${{ secrets.TG_ADMIN_CHAT_IDS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 robot/tgbot.py --linger 180
