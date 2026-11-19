@@ -51,12 +51,29 @@ HELP = """<b>Знания — управление</b>
 Новые записи робот присылает сюда карточкой со звуком. Под карточкой кнопки:
 ✅ опубликовать в приложении · ✏️ изменить · 🗑 удалить.
 
-/drafts — черновики, ждущие решения
-/recent — последние опубликованные (можно снять с публикации)
-/sources — источники: включить, выключить, автопубликация
-/status — когда работал робот, сколько записей и места
-/run — проверить источники прямо сейчас
-/help — эта справка"""
+Кнопки меню внизу экрана:
+📥 Черновики — записи, ждущие решения
+📗 Опубликованные — последние записи в приложении, их можно снять с публикации
+📡 Источники — включить, выключить, автопубликация
+📊 Состояние — когда работал робот, сколько записей и места
+🔄 Проверить сейчас — искать новые записи, не дожидаясь расписания
+
+То же самое доступно командами: /drafts /recent /sources /status /run /help"""
+
+# Постоянное меню внизу экрана: текст кнопки → команда
+MENU_BUTTONS = {"📥 Черновики": "/drafts", "📗 Опубликованные": "/recent", "📡 Источники": "/sources",
+                "📊 Состояние": "/status", "🔄 Проверить сейчас": "/run", "❓ Справка": "/help"}
+MENU = {"keyboard": [[{"text": "📥 Черновики"}, {"text": "📗 Опубликованные"}],
+                     [{"text": "📡 Источники"}, {"text": "📊 Состояние"}],
+                     [{"text": "🔄 Проверить сейчас"}, {"text": "❓ Справка"}]],
+        "resize_keyboard": True, "is_persistent": True}
+
+
+def quick(*names: str) -> list:
+    """Кнопки-подсказки под ответом бота: следующий вероятный шаг в одно нажатие."""
+    labels = {"drafts": "📥 Черновики", "recent": "📗 Опубликованные", "sources": "📡 Источники",
+              "status": "📊 Состояние", "run": "🔄 Проверить сейчас"}
+    return [[{"text": labels[n], "callback_data": f"m:{n}"} for n in names]]
 
 
 def log(msg: str) -> None:
@@ -420,7 +437,7 @@ def unpublish(rid: str) -> tuple[bool, str]:
 def cmd_drafts(chat: int) -> None:
     items = load_drafts()["drafts"]
     if not items:
-        send(chat, "Черновиков нет.")
+        send(chat, "Черновиков нет.", quick("run", "recent"))
         return
     send(chat, f"Черновиков: {len(items)}")
     for d in items[:15]:
@@ -439,7 +456,7 @@ def cmd_recent(chat: int) -> None:
                  [[{"text": "Снять с публикации", "callback_data": f"unp:{rec['id']}"}]])
             shown += 1
     if not shown:
-        send(chat, "В приложении пока нет записей.")
+        send(chat, "В приложении пока нет записей.", quick("drafts"))
 
 
 def sources_view() -> tuple[str, list]:
@@ -482,7 +499,7 @@ def cmd_status(chat: int) -> None:
     for sid, s in state.get("sources", {}).items():
         if s.get("error"):
             lines.append(f"⚠️ {html.escape(sid)}: {html.escape(s['error'])}")
-    send(chat, "\n".join(lines))
+    send(chat, "\n".join(lines), quick("drafts", "run") + quick("sources", "recent"))
 
 
 def cmd_run(chat: int) -> None:
@@ -496,9 +513,29 @@ def cmd_run(chat: int) -> None:
         headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"})
     try:
         urllib.request.urlopen(req, timeout=30).read()
-        send(chat, "Запустил проверку источников. Новые записи придут сюда через несколько минут.")
+        send(chat, "Запустил проверку источников. Новые записи придут сюда через несколько минут.",
+             quick("status", "drafts"))
     except urllib.error.HTTPError as e:
         send(chat, f"Не удалось запустить робота (ошибка {e.code}).")
+
+
+def dispatch(chat: int, cmd: str) -> bool:
+    if cmd in ("/start", "/help"):
+        send(chat, HELP, reply_markup=MENU)
+    elif cmd == "/drafts":
+        cmd_drafts(chat)
+    elif cmd == "/recent":
+        cmd_recent(chat)
+    elif cmd == "/sources":
+        text, kb = sources_view()
+        send(chat, text, kb)
+    elif cmd == "/status":
+        cmd_status(chat)
+    elif cmd == "/run":
+        cmd_run(chat)
+    else:
+        return False
+    return True
 
 
 # ── Обработка входящих ──────────────────────────────────────────────────────
@@ -516,6 +553,10 @@ def on_callback(cq: dict) -> None:
     data = cq.get("data", "")
     if chat not in admins():
         answer(cq["id"], "Нет доступа")
+        return
+    if data.startswith("m:"):
+        answer(cq["id"])
+        dispatch(chat, "/" + data[2:])
         return
     m = re.fullmatch(r"(pub|del|delok|edit|back|ek|unp|unpok|unpno|son|sau):([\w-]+)|ef:([tsd]):([\w-]+)", data)
     if not m:
@@ -589,28 +630,15 @@ def on_message(msg: dict) -> None:
         draft, note = update_draft(did, FIELD[code][0], text)
         if draft:
             edit_card(chat, card_mid, card_text(draft), kb_main(did))
-            send(chat, "Сохранено. Карточка выше обновлена — можно публиковать.")
+            send(chat, "Сохранено. Карточка выше обновлена — можно публиковать.", quick("drafts"))
         else:
             send(chat, note)
         return
 
-    cmd = text.split()[0].split("@")[0].lower() if text.startswith("/") else ""
-    if cmd in ("/start", "/help"):
-        send(chat, HELP)
-    elif cmd == "/drafts":
-        cmd_drafts(chat)
-    elif cmd == "/recent":
-        cmd_recent(chat)
-    elif cmd == "/sources":
-        text_, kb = sources_view()
-        send(chat, text_, kb)
-    elif cmd == "/status":
-        cmd_status(chat)
-    elif cmd == "/run":
-        cmd_run(chat)
-    else:
-        send(chat, "Не понял. Чтобы изменить запись, нажмите «Изменить» под карточкой "
-                   "и ответьте на сообщение бота. Список команд — /help")
+    cmd = MENU_BUTTONS.get(text) or (text.split()[0].split("@")[0].lower() if text.startswith("/") else "")
+    if not dispatch(chat, cmd):
+        send(chat, "Не понял. Пользуйтесь кнопками меню внизу. Чтобы изменить запись, нажмите «Изменить» "
+                   "под карточкой и ответьте на сообщение бота.", reply_markup=MENU)
 
 
 def handle(update: dict) -> None:
