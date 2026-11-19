@@ -66,9 +66,12 @@
       "status": "skipped"
     },
     "yt:uqDbEwvWJ4U": {
-      "status": "retry",
-      "attempts": 1,
-      "url": "https://www.youtube.com/watch?v=uqDbEwvWJ4U"
+      "at": "2026-11-19T20:50:39+00:00",
+      "url": "https://www.youtube.com/watch?v=uqDbEwvWJ4U",
+      "title": "Димыӏэм диӏэр дигъэлъагъужкъым!",
+      "reason": "В подписи прямо указано «ХъутIбэ (адыгэбзэкIэ)» — пятничная проповедь на кабардинском.",
+      "record_id": "khutba_20261030_1795121439435",
+      "status": "draft"
     },
     "yt:07Fna9vWxno": {
       "status": "skipped",
@@ -121,16 +124,75 @@
       "url": "https://www.youtube.com/watch?v=x_W4xOFcako"
     },
     "yt:5luIjpUQXVs": {
-      "status": "retry",
-      "attempts": 1,
-      "url": "https://www.youtube.com/watch?v=5luIjpUQXVs"
+      "at": "2026-11-19T20:51:18+00:00",
+      "url": "https://www.youtube.com/watch?v=5luIjpUQXVs",
+      "title": "Тафсир суры \"Юсуф\" Аят 15",
+      "reason": "Урок тафсира суры Юсуф — лекция",
+      "record_id": "lecture_20260205_1795121478276",
+      "status": "draft"
+    },
+    "yt:a6AwUY1_MJ0": {
+      "at": "2026-11-19T20:50:48+00:00",
+      "url": "https://www.youtube.com/watch?v=a6AwUY1_MJ0",
+      "title": "В погоне за тем, чего нет, мы перестали ценить то, что имеем",
+      "reason": "В подписи прямо указано «Хутба (на русском)» с датой.",
+      "record_id": "khutba_20261030_1795121448781",
+      "status": "draft"
+    },
+    "yt:L7Sa2dbFDSY": {
+      "at": "2026-11-19T20:50:57+00:00",
+      "url": "https://www.youtube.com/watch?v=L7Sa2dbFDSY",
+      "title": "ДимыIэм диIэр дигъэлъагъужкъым!/В погоне за тем, чего нет, мы перестали ценить то, что имеем",
+      "reason": "В описании прямо указано «ХъутIбэ» и «Хутба» с датой 30.10.2026, но язык записи неясен: тема дана на двух языках, и это может быть одна проповедь сразу на двух языках.",
+      "record_id": "khutba_20261030_1795121457764",
+      "status": "draft"
+    },
+    "yt:Ei6gb1XEKzI": {
+      "at": "2026-11-19T20:51:09+00:00",
+      "url": "https://www.youtube.com/watch?v=Ei6gb1XEKzI",
+      "title": "ЦIыхур уи щхьэм еплъытыныр",
+      "reason": "В подписи прямо указано «ХъутIбэ» с датой и темой на кабардинском.",
+      "record_id": "khutba_20261113_1795121469319",
+      "status": "draft"
+    },
+    "yt:4u5B6VVYbyI": {
+      "at": "2026-11-19T20:51:33+00:00",
+      "url": "https://www.youtube.com/watch?v=4u5B6VVYbyI",
+      "title": "Тафсир суры Юсуф, аят 16",
+      "reason": "Урок тафсира суры Юсуф — лекция, не хутба",
+      "record_id": "lecture_20260716_1795121493135",
+      "status": "draft"
+    },
+    "yt:UHz5EQXqlF4": {
+      "at": "2026-11-19T20:51:49+00:00",
+      "url": "https://www.youtube.com/watch?v=UHz5EQXqlF4",
+      "title": "Тафсир суры \"Юсуф\" Аят 17",
+      "reason": "Урок тафсира суры Юсуф, аят 17",
+      "record_id": "lecture_20260716_1795121509619",
+      "status": "draft"
+    },
+    "yt:aDGJtGa6l1Q": {
+      "at": "2026-11-19T20:52:02+00:00",
+      "url": "https://www.youtube.com/watch?v=aDGJtGa6l1Q",
+      "title": "Тафсир суры Юсуф, аят 18",
+      "reason": "Урок тафсира — лекция",
+      "record_id": "lecture_20260716_1795121522421",
+      "status": "draft"
+    },
+    "yt:L2ZNg2gAth8": {
+      "at": "2026-11-19T20:52:16+00:00",
+      "url": "https://www.youtube.com/watch?v=L2ZNg2gAth8",
+      "title": "Тафсир суры Юсуф, аят 19",
+      "reason": "Это урок тафсира суры Юсуф, то есть лекция.",
+      "record_id": "lecture_20260716_1795121536141",
+      "status": "draft"
     }
   },
   "last_run": {
-    "at": "2026-11-19 20:49",
-    "summary": "errors: 2, skipped: 1"
+    "at": "2026-11-19 20:52",
+    "summary": "draft: 9"
   },
-  "storage_mb": 165,
+  "storage_mb": 37,
   "alerts": {
     "no_khutba": "2026-11-19"
   }
