@@ -1,5 +1,3 @@
-$ cat /tmp/admin_new.html
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -91,6 +89,16 @@ input[type=file] { display: none; }
 
 .empty { text-align: center; color: #b0b0b5; padding: 30px 0; font-size: 15px; }
 
+/* Черновики */
+.draft-form select {
+  width: 100%; padding: 10px 13px; border: 1.5px solid #e0e0e5; border-radius: 10px;
+  font-size: 15px; background: #fff; margin-bottom: 8px;
+}
+.draft-form audio { width: 100%; margin: 4px 0 10px; }
+.draft-note { font-size: 13px; color: #6e6e73; margin-bottom: 10px; line-height: 1.5; }
+.draft-note a { color: #007AFF; }
+.badge-low { display: inline-block; background: #fff3cd; color: #8a6d00; border-radius: 6px; padding: 1px 7px; font-size: 12px; font-weight: 600; }
+
 #loginBox, #mainBox { }
 #mainBox { display: none; }
 </style>
@@ -118,9 +126,11 @@ input[type=file] { display: none; }
     <div class="seg" id="tabSeg">
       <button class="active" onclick="switchTab('khutba',this)">Хутбы</button>
       <button onclick="switchTab('lectures',this)">Лекции</button>
+      <button id="draftsTabBtn" onclick="switchTab('drafts',this)">Черновики</button>
     </div>
 
     <!-- Форма добавления -->
+    <div id="addBox">
     <h2>Добавить</h2>
     <div class="card">
       <label>Название</label>
@@ -139,6 +149,7 @@ input[type=file] { display: none; }
 
       <button class="btn-primary" id="uploadBtn" onclick="doUpload()">⬆️ Загрузить</button>
       <div class="log" id="uploadLog">Заполните поля и нажмите «Загрузить»</div>
+    </div>
     </div>
 
     <!-- Список -->
@@ -159,8 +170,9 @@ const ADMIN_PASS_SHA256 = '2ce5eb9e69ac7abb5360fabb967ce85591ac7b05cf7e885641c07
 // ──────────────────────────────────────────────────────────────────────
 
 let TOKEN       = '';
-let currentTab  = 'khutba';  // 'khutba' | 'lectures'
+let currentTab  = 'khutba';  // 'khutba' | 'lectures' | 'drafts'
 let jsonData    = null;       // полный объект из khutba.json
+let draftsData  = { drafts: [] }; // drafts.json — записи робота, ждущие одобрения
 let editingId   = null;       // ID записи в режиме редактирования
 
 // ── Вход ───────────────────────────────────────────────────────────────
@@ -201,6 +213,7 @@ async function showMain() {
   document.getElementById('mainBox').style.display  = 'block';
   document.getElementById('date').value = new Date().toISOString().split('T')[0];
   await loadJsonData();
+  await loadDrafts();
   renderList();
 }
 
@@ -211,7 +224,8 @@ function switchTab(tab, btn) {
   document.querySelectorAll('#tabSeg button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('listTitle').textContent =
-    tab === 'khutba' ? 'Список хутб' : 'Список лекций';
+    tab === 'drafts' ? 'Черновики от робота' : tab === 'khutba' ? 'Список хутб' : 'Список лекций';
+  document.getElementById('addBox').style.display = tab === 'drafts' ? 'none' : 'block';
   editingId = null;
   renderList();
 }
@@ -237,6 +251,7 @@ async function loadJsonData() {
 function renderList() {
   const container = document.getElementById('listContainer');
   if (!jsonData) { container.innerHTML = '<div class="empty">Загрузка...</div>'; return; }
+  if (currentTab === 'drafts') { renderDrafts(container); return; }
 
   const items = (currentTab === 'khutba' ? jsonData.khutba : jsonData.lectures) || [];
   const sorted = [...items].sort((a, b) => b.date.localeCompare(a.date));
@@ -275,6 +290,148 @@ function renderList() {
       </div>
     </div>
   `; }).join('');
+}
+
+// ── Черновики (drafts.json пишет робот robot/robot.py) ─────────────────
+
+function decodeContent(res) {
+  const binary = atob(res.content.replace(/\n/g, ''));
+  return new TextDecoder('utf-8').decode(Uint8Array.from(binary, c => c.charCodeAt(0)));
+}
+
+async function loadDrafts() {
+  try {
+    const parsed = JSON.parse(decodeContent(await githubGet('drafts.json')));
+    draftsData = { drafts: Array.isArray(parsed.drafts) ? parsed.drafts : [] };
+  } catch (e) {
+    draftsData = { drafts: [] }; // файла ещё нет — робот не запускался
+  }
+  updateDraftsBadge();
+}
+
+function updateDraftsBadge() {
+  const n = draftsData.drafts.length;
+  document.getElementById('draftsTabBtn').textContent = n ? `Черновики (${n})` : 'Черновики';
+}
+
+// Ссылки в черновиках приходят из сети: в разметку попадают только https
+function safeUrl(u) {
+  return /^https:\/\//i.test(u || '') ? escHtml(u) : '';
+}
+
+function renderDrafts(container) {
+  const items = draftsData.drafts;
+  if (!items.length) {
+    container.innerHTML = '<div class="empty">Черновиков нет</div>';
+    return;
+  }
+  container.innerHTML = items.map(item => {
+    const sid   = String(item.id || '').replace(/[^\w-]/g, '');
+    const audio = safeUrl(item.audio_url);
+    const src   = safeUrl(item.source_url);
+    const mins  = item.duration ? ` · ${Math.round(item.duration / 60)} мин` : '';
+    return `
+    <div class="item-row" id="row_${sid}">
+      <div class="edit-form draft-form">
+        <div class="draft-note">
+          ${item.confidence === 'low' ? '<span class="badge-low">проверьте внимательно</span> ' : ''}${escHtml(item.reason || '')}${mins}
+          ${src ? ` · <a href="${src}" target="_blank" rel="noopener noreferrer">исходный пост</a>` : ''}
+        </div>
+        ${audio ? `<audio controls preload="none" src="${audio}"></audio>` : ''}
+        <label>Раздел</label>
+        <select id="dk_${sid}">
+          <option value="khutba" ${item.kind === 'khutba' ? 'selected' : ''}>Хутбы</option>
+          <option value="lectures" ${item.kind === 'khutba' ? '' : 'selected'}>Лекции</option>
+        </select>
+        <label>Название</label>
+        <input type="text" id="dt_${sid}" value="${escHtml(item.title)}">
+        <label>Спикер</label>
+        <input type="text" id="ds_${sid}" value="${escHtml(item.speaker)}">
+        <label>Дата</label>
+        <input type="date" id="dd_${sid}" value="${escHtml(item.date)}">
+        <div class="edit-btns">
+          <button class="btn-save" onclick="publishDraft('${sid}')">Опубликовать</button>
+          <button class="btn-cancel" onclick="rejectDraft('${sid}')">Удалить</button>
+        </div>
+        <div class="log" id="draftlog_${sid}" style="display:none"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function draftLog(id, html) {
+  const el = document.getElementById(`draftlog_${id}`);
+  if (el) { el.style.display = 'block'; el.innerHTML = html; }
+}
+
+async function saveDrafts() {
+  let sha;
+  try { sha = (await githubGet('drafts.json')).sha; } catch (e) { sha = undefined; }
+  const body = btoa(unescape(encodeURIComponent(JSON.stringify(draftsData, null, 2))));
+  await githubPut('drafts.json', body, 'Update drafts', sha);
+}
+
+async function publishDraft(id) {
+  const draft = draftsData.drafts.find(d => d.id === id);
+  if (!draft) return;
+  const key     = document.getElementById(`dk_${id}`).value === 'khutba' ? 'khutba' : 'lectures';
+  const title   = document.getElementById(`dt_${id}`).value.trim();
+  const speaker = document.getElementById(`ds_${id}`).value.trim();
+  const date    = document.getElementById(`dd_${id}`).value;
+  if (!title || !speaker || !date) { draftLog(id, '<span class="err">Заполни все поля</span>'); return; }
+
+  draftLog(id, 'Публикую...');
+  try {
+    await loadJsonData(); // свежая база: робот или второй админ могли её изменить
+    const ts = String(draft.id).split('_').pop().replace(/\D/g, '') || Date.now();
+    const newItem = {
+      id:           `${key === 'khutba' ? 'khutba' : 'lecture'}_${date.replace(/-/g, '')}_${ts}`,
+      date,
+      date_display: formatDate(date),
+      title,
+      speaker,
+      audio_url:    draft.audio_url,
+      duration:     draft.duration || 0
+    };
+    if (!/^https:\/\//i.test(newItem.audio_url || '')) throw new Error('у черновика нет ссылки на аудио');
+    if (jsonData[key].some(i => i.id === newItem.id)) throw new Error('такая запись уже опубликована');
+    jsonData[key].unshift(newItem);
+    jsonData.last_updated = new Date().toISOString();
+    await saveJsonData();
+
+    await loadDrafts();
+    draftsData.drafts = draftsData.drafts.filter(d => d.id !== id);
+    await saveDrafts();
+    updateDraftsBadge();
+    renderList();
+  } catch (e) {
+    draftLog(id, `<span class="err">Ошибка: ${escHtml(e.message)}</span>`);
+  }
+}
+
+async function rejectDraft(id) {
+  const draft = draftsData.drafts.find(d => d.id === id);
+  if (!draft) return;
+  if (!confirm(`Удалить черновик "${draft.title}"?\n\nАудиофайл тоже будет удалён.`)) return;
+
+  draftLog(id, 'Удаляю...');
+  try {
+    await loadDrafts();
+    draftsData.drafts = draftsData.drafts.filter(d => d.id !== id);
+    await saveDrafts();
+    // Файл черновика нигде больше не используется — освобождаем место
+    const m = /\/(audio\/[\w.-]+\.mp3)$/.exec(draft.audio_url || '');
+    if (m) {
+      try {
+        const { sha } = await githubGet(m[1]);
+        await githubDelete(m[1], `Delete draft audio`, sha);
+      } catch (e) { /* файла уже нет — не страшно */ }
+    }
+    updateDraftsBadge();
+    renderList();
+  } catch (e) {
+    draftLog(id, `<span class="err">Ошибка: ${escHtml(e.message)}</span>`);
+  }
 }
 
 function toggleEdit(id) {
@@ -452,6 +609,22 @@ async function githubPut(path, content, message, sha) {
       method:  'PUT',
       headers: { Authorization: `token ${TOKEN}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
       body:    JSON.stringify(body)
+    }
+  );
+  if (!resp.ok) {
+    const err = await resp.json().catch(() => ({}));
+    throw new Error(err.message || resp.status);
+  }
+  return resp.json();
+}
+
+async function githubDelete(path, message, sha) {
+  const resp = await fetch(
+    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`,
+    {
+      method:  'DELETE',
+      headers: { Authorization: `token ${TOKEN}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ message, sha })
     }
   );
   if (!resp.ok) {

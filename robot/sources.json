@@ -1,0 +1,37 @@
+{
+  "sources": [
+    {
+      "id": "abu_islam",
+      "title": "Telegram: Абу Ислам аш-Шаркаси",
+      "type": "telegram",
+      "channel": "abu_islam_official",
+      "speaker": "Абу Ислам аш-Шаркаси",
+      "default_kind": "lecture",
+      "auto_publish": false,
+      "backfill": 30,
+      "enabled": true
+    },
+    {
+      "id": "shkhanukov",
+      "title": "Telegram: Шхануков Анзор",
+      "type": "telegram",
+      "channel": "Shkhanukov_A",
+      "speaker": "Шхануков Анзор",
+      "default_kind": "lecture",
+      "auto_publish": false,
+      "backfill": 30,
+      "enabled": true
+    },
+    {
+      "id": "shkhanukov_youtube",
+      "title": "YouTube: Щхьэныкъуэ Анзор и дерсхэр, хъутIбэхэр, уазхэр",
+      "type": "youtube",
+      "channel_id": "UCEAL8-cq--CdFCwkTUNP0pQ",
+      "speaker": "Шхануков Анзор",
+      "default_kind": "lecture",
+      "auto_publish": false,
+      "backfill": 5,
+      "enabled": false
+    }
+  ]
+}
