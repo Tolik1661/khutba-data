@@ -1,4 +1,137 @@
 {
-  "sources": {},
-  "items": {}
+  "sources": {
+    "shkhanukov_youtube": {
+      "started": "2026-11-19"
+    },
+    "abu_islam_youtube": {
+      "started": "2026-11-19"
+    }
+  },
+  "items": {
+    "yt:II1hJ-qYywM": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=II1hJ-qYywM"
+    },
+    "yt:bJfvupJyzyc": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=bJfvupJyzyc"
+    },
+    "yt:ZrFZ6F0SaAA": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=ZrFZ6F0SaAA"
+    },
+    "yt:QtcS_6xxalo": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=QtcS_6xxalo"
+    },
+    "yt:u5pO5mMIMrc": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=u5pO5mMIMrc"
+    },
+    "yt:SarrrmNpUOI": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=SarrrmNpUOI"
+    },
+    "yt:DFSuHoNuJrQ": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=DFSuHoNuJrQ"
+    },
+    "yt:wNM4BknE_G0": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=wNM4BknE_G0"
+    },
+    "yt:Iz8heIWCGBs": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=Iz8heIWCGBs"
+    },
+    "yt:Kq8YCARe8NM": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=Kq8YCARe8NM"
+    },
+    "yt:9N1IdznUD4k": {
+      "at": "2026-11-19T20:49:16+00:00",
+      "url": "https://www.youtube.com/watch?v=9N1IdznUD4k",
+      "title": "Зикр зыщӏымрэ зымыщӏымрэ/Делающий зикр и не делающий",
+      "reason": "Хутба повторена на двух языках в одной записи; неизвестно, выходят ли языковые версии отдельными постами, поэтому нужна проверка",
+      "status": "skipped"
+    },
+    "yt:uqDbEwvWJ4U": {
+      "status": "retry",
+      "attempts": 1,
+      "url": "https://www.youtube.com/watch?v=uqDbEwvWJ4U"
+    },
+    "yt:07Fna9vWxno": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=07Fna9vWxno"
+    },
+    "yt:8GG1JWQ-RBA": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=8GG1JWQ-RBA"
+    },
+    "yt:d80VacClJIk": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=d80VacClJIk"
+    },
+    "yt:RSQqvs-DDBM": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=RSQqvs-DDBM"
+    },
+    "yt:Lc16BFUrFZQ": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=Lc16BFUrFZQ"
+    },
+    "yt:V5d8Dv2AVTk": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=V5d8Dv2AVTk"
+    },
+    "yt:77J95EO00aM": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=77J95EO00aM"
+    },
+    "yt:sfczbN1B3DY": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=sfczbN1B3DY"
+    },
+    "yt:xcz5FcNKkcw": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=xcz5FcNKkcw"
+    },
+    "yt:x_W4xOFcako": {
+      "status": "skipped",
+      "reason": "до подключения источника",
+      "url": "https://www.youtube.com/watch?v=x_W4xOFcako"
+    },
+    "yt:5luIjpUQXVs": {
+      "status": "retry",
+      "attempts": 1,
+      "url": "https://www.youtube.com/watch?v=5luIjpUQXVs"
+    }
+  },
+  "last_run": {
+    "at": "2026-11-19 20:49",
+    "summary": "errors: 2, skipped: 1"
+  },
+  "storage_mb": 165,
+  "alerts": {
+    "no_khutba": "2026-11-19"
+  }
 }
