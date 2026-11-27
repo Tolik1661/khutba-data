@@ -379,7 +379,7 @@ def is_duplicate(titles: dict, res: dict) -> bool:
     day = dt.date.fromisoformat(res["date"])
     for d in dates:
         try:
-            if abs((dt.date.fromisoformat(d) - day).days) <= 7:
+            if abs((dt.date.fromisoformat(d) - day).days) <= 3:   # уроки идут раз в неделю — 7 дней это уже новый урок
                 return True
         except ValueError:
             continue
