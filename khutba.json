@@ -1,6 +1,429 @@
 {
-  "last_updated": "2026-06-24T21:32:25.788Z",
+  "last_updated": "2026-11-27T18:30:27.000Z",
   "khutba": [
+    {
+      "id": "khutba_20261120_1795804225560",
+      "date": "2026-11-20",
+      "date_display": "20.11.2026",
+      "title": "НэгъуэщIым и щыуагъэм уи хьэлыр йомыпх!",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-11-20_1795804225560.mp3",
+      "duration": 378
+    },
+    {
+      "id": "khutba_20261113_1795804223923",
+      "date": "2026-11-13",
+      "date_display": "13.11.2026",
+      "title": "ЦIыхур уи щхьэм еплъытэныр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-11-13_1795804223923.mp3",
+      "duration": 435
+    },
+    {
+      "id": "khutba_20261030_1795804222453",
+      "date": "2026-10-30",
+      "date_display": "30.10.2026",
+      "title": "ДимыIэм диIэр дигъэлъагъужкъым!",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-10-30_1795804222453.mp3",
+      "duration": 366
+    },
+    {
+      "id": "khutba_20260925_1795804212405",
+      "date": "2026-09-25",
+      "date_display": "25.09.2026",
+      "title": "ПхуэщIэну хъуар пщIэн хуейуэ щыткъым!",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-09-25_1795804212405.mp3",
+      "duration": 374
+    },
+    {
+      "id": "khutba_20260911_1795804201986",
+      "date": "2026-09-11",
+      "date_display": "11.09.2026",
+      "title": "Сыщыуащ, пхужыIыныр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-09-11_1795804201986.mp3",
+      "duration": 413
+    },
+    {
+      "id": "khutba_20260904_1795804191755",
+      "date": "2026-09-04",
+      "date_display": "04.09.2026",
+      "title": "Муслъымэным и хъейрыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-09-04_1795804191755.mp3",
+      "duration": 390
+    },
+    {
+      "id": "khutba_20260814_1795804189998",
+      "date": "2026-08-14",
+      "date_display": "14.08.2026",
+      "title": "Нэмэз зэращIыр дощIэ, ауэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-08-14_1795804189998.mp3",
+      "duration": 431
+    },
+    {
+      "id": "khutba_20260731_1795804188573",
+      "date": "2026-07-31",
+      "date_display": "31.07.2026",
+      "title": "Уи щхьэм деж къыщыщIэдзэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-07-31_1795804188573.mp3",
+      "duration": 359
+    },
+    {
+      "id": "khutba_20260717_1795804176501",
+      "date": "2026-07-17",
+      "date_display": "17.07.2026",
+      "title": "Унагъуэр хъумэныр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-07-17_1795804176501.mp3",
+      "duration": 385
+    },
+    {
+      "id": "khutba_20260710_1795804164851",
+      "date": "2026-07-10",
+      "date_display": "10.07.2026",
+      "title": "ТщIар дымыгъэкIуэдыжыныр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-07-10_1795804164851.mp3",
+      "duration": 379
+    },
+    {
+      "id": "khutba_20260626_1795804152474",
+      "date": "2026-06-26",
+      "date_display": "26.06.2026",
+      "title": "ХъутIбэм и купщIэр дымыгъэкIуэду",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-06-26_1795804152474.mp3",
+      "duration": 361
+    },
+    {
+      "id": "khutba_20260522_1795804141243",
+      "date": "2026-05-22",
+      "date_display": "22.05.2026",
+      "title": "Хьэжымрэ, хьэж зэманымрэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-05-22_1795804141243.mp3",
+      "duration": 353
+    },
+    {
+      "id": "khutba_20260501_1795804140031",
+      "date": "2026-05-01",
+      "date_display": "01.05.2026",
+      "title": "Мэжджытым и къалэныр щигъэзащӏэкӏэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-05-01_1795804140031.mp3",
+      "duration": 301
+    },
+    {
+      "id": "khutba_20260320_1795804127597",
+      "date": "2026-03-20",
+      "date_display": "20.03.2026",
+      "title": "НэщI икIыж гьид хъутIбэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-03-20_1795804127597.mp3",
+      "duration": 576
+    },
+    {
+      "id": "khutba_20260313_1795804126352",
+      "date": "2026-03-13",
+      "date_display": "13.03.2026",
+      "title": "Рэмэданым и иужьрей джумгьэр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-03-13_1795804126352.mp3",
+      "duration": 304
+    },
+    {
+      "id": "khutba_20260227_1795804117816",
+      "date": "2026-02-27",
+      "date_display": "27.02.2026",
+      "title": "Ухиубыда пэтрэ къомыгъэсэбэпмэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-02-27_1795804117816.mp3",
+      "duration": 321
+    },
+    {
+      "id": "khutba_20260220_1795804116654",
+      "date": "2026-02-20",
+      "date_display": "20.02.2026",
+      "title": "Нэщӏ мазэ лъапӏэ къытхуеблэгъащ!",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-02-20_1795804116654.mp3",
+      "duration": 298
+    },
+    {
+      "id": "khutba_20260206_1795804105525",
+      "date": "2026-02-06",
+      "date_display": "06.02.2026",
+      "title": "Заманыр сэ жаным ещхьщ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-02-06_1795804105525.mp3",
+      "duration": 299
+    },
+    {
+      "id": "khutba_20260116_1795804094566",
+      "date": "2026-01-16",
+      "date_display": "16.01.2026",
+      "title": "Щӏымахуэмрэ, псапэмрэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-01-16_1795804094566.mp3",
+      "duration": 322
+    },
+    {
+      "id": "khutba_20260109_1795804083385",
+      "date": "2026-01-09",
+      "date_display": "09.01.2026",
+      "title": "Нэмэз ищӏу, ауэ дин хэмылъу!",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-01-09_1795804083385.mp3",
+      "duration": 332
+    },
+    {
+      "id": "khutba_20251226_1795804058391",
+      "date": "2025-12-26",
+      "date_display": "26.12.2025",
+      "title": "Цӏыхум зыгъэпӏииныр щӏыфӏэфӏыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-12-26_1795804058391.mp3",
+      "duration": 409
+    },
+    {
+      "id": "khutba_20251219_1795804045621",
+      "date": "2025-12-19",
+      "date_display": "19.12.2025",
+      "title": "Имыӏэмкӏэ зызыгъэщӏагъуэр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-12-19_1795804045621.mp3",
+      "duration": 370
+    },
+    {
+      "id": "khutba_20251128_1795804032954",
+      "date": "2025-11-28",
+      "date_display": "28.11.2025",
+      "title": "Псалъэмакъымрэ, губжьымрэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-11-28_1795804032954.mp3",
+      "duration": 408
+    },
+    {
+      "id": "khutba_20251121_1795804031224",
+      "date": "2025-11-21",
+      "date_display": "21.11.2025",
+      "title": "Псалъэмакъыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-11-21_1795804031224.mp3",
+      "duration": 410
+    },
+    {
+      "id": "khutba_20251031_1795804008160",
+      "date": "2025-10-31",
+      "date_display": "31.10.2025",
+      "title": "Лӏыгъэмрэ, напэмрэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-10-31_1795804008160.mp3",
+      "duration": 378
+    },
+    {
+      "id": "khutba_20251024_1795804006415",
+      "date": "2025-10-24",
+      "date_display": "24.10.2025",
+      "title": "Гупсысэкӏэр щызэтекӏым деж",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-10-24_1795804006415.mp3",
+      "duration": 424
+    },
+    {
+      "id": "khutba_20251017_1795803985700",
+      "date": "2025-10-17",
+      "date_display": "17.10.2025",
+      "title": "Мэжджытым и пщӏэр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-10-17_1795803985700.mp3",
+      "duration": 396
+    },
+    {
+      "id": "khutba_20251003_1795803984237",
+      "date": "2025-10-03",
+      "date_display": "03.10.2025",
+      "title": "Жумартагъыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-10-03_1795803984237.mp3",
+      "duration": 362
+    },
+    {
+      "id": "khutba_20250905_1795803961115",
+      "date": "2025-09-05",
+      "date_display": "05.09.2025",
+      "title": "ФIыгъуэр зэхызощIэ, гуэныхь зэрызиIэри сощIэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-09-05_1795803961115.mp3",
+      "duration": 375
+    },
+    {
+      "id": "khutba_20250815_1795803959639",
+      "date": "2025-08-15",
+      "date_display": "15.08.2025",
+      "title": "Iущыгъэ хэлъу Iуэхум бгъэдыхьэн",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-08-15_1795803959639.mp3",
+      "duration": 367
+    },
+    {
+      "id": "khutba_20250801_1795803946171",
+      "date": "2025-08-01",
+      "date_display": "01.08.2025",
+      "title": "Гузэвэгъуэм цIыхухэр еугуэш",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-08-01_1795803946171.mp3",
+      "duration": 379
+    },
+    {
+      "id": "khutba_20250620_1795803920981",
+      "date": "2025-06-20",
+      "date_display": "20.06.2025",
+      "title": "ХъутIбэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-06-20_1795803920981.mp3",
+      "duration": 328
+    },
+    {
+      "id": "khutba_20250613_1795803919543",
+      "date": "2025-06-13",
+      "date_display": "13.06.2025",
+      "title": "ХъутIбэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-06-13_1795803919543.mp3",
+      "duration": 351
+    },
+    {
+      "id": "khutba_20250425_1795803892827",
+      "date": "2025-04-25",
+      "date_display": "25.04.2025",
+      "title": "Гурыщхъуэм томыщIыхь",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-04-25_1795803892827.mp3",
+      "duration": 419
+    },
+    {
+      "id": "khutba_20250411_1795803879376",
+      "date": "2025-04-11",
+      "date_display": "11.04.2025",
+      "title": "Ди псэр пытыхукIэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-04-11_1795803879376.mp3",
+      "duration": 414
+    },
+    {
+      "id": "khutba_20250307_1795803877843",
+      "date": "2025-03-07",
+      "date_display": "07.03.2025",
+      "title": "КъурIэнымрэ сэдэкъэмрэ я мазэр!",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-03-07_1795803877843.mp3",
+      "duration": 368
+    },
+    {
+      "id": "khutba_20250207_1795803866455",
+      "date": "2025-02-07",
+      "date_display": "07.02.2025",
+      "title": "Нэщӏ мазэм цӏыхухэр зэрыпежьэр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-02-07_1795803866455.mp3",
+      "duration": 347
+    },
+    {
+      "id": "khutba_20250124_1795803840888",
+      "date": "2025-01-24",
+      "date_display": "24.01.2025",
+      "title": "Тобэ къэзыхьыжым и насыпщ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-01-24_1795803840888.mp3",
+      "duration": 442
+    },
+    {
+      "id": "khutba_20241227_1795803839207",
+      "date": "2024-12-27",
+      "date_display": "27.12.2024",
+      "title": "Зи щхьэ пщIэ хуэзыщIыжыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2024-12-27_1795803839207.mp3",
+      "duration": 401
+    },
+    {
+      "id": "khutba_20231110_1795803710110",
+      "date": "2023-11-10",
+      "date_display": "10.11.2023",
+      "title": "Кхъухь щIилъафэм дызэрылъэIэсынур",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-11-10_1795803710110.mp3",
+      "duration": 321
+    },
+    {
+      "id": "khutba_20230929_1795803676300",
+      "date": "2023-09-29",
+      "date_display": "29.09.2023",
+      "title": "А Тхылъым шэч хэлъкъым",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-09-29_1795803676300.mp3",
+      "duration": 342
+    },
+    {
+      "id": "khutba_20230324_1795803675179",
+      "date": "2023-03-24",
+      "date_display": "24.03.2023",
+      "title": "Рэмэданым и япэ махуэхэр!",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-03-24_1795803675179.mp3",
+      "duration": 291
+    },
+    {
+      "id": "khutba_20230317_1795803673635",
+      "date": "2023-03-17",
+      "date_display": "17.03.2023",
+      "title": "Рэмэданым ипэ къихуэу",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-03-17_1795803673635.mp3",
+      "duration": 376
+    },
+    {
+      "id": "khutba_20220429_1795803648165",
+      "date": "2022-04-29",
+      "date_display": "29.04.2022",
+      "title": "Рэмаданым и иужьрей Джумгьэр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2022-04-29_1795803648165.mp3",
+      "duration": 320
+    },
+    {
+      "id": "khutba_20220415_1795803646578",
+      "date": "2022-04-15",
+      "date_display": "15.04.2022",
+      "title": "Гуапагъэм и мазэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2022-04-15_1795803646578.mp3",
+      "duration": 410
+    },
+    {
+      "id": "khutba_20220401_1795803645351",
+      "date": "2022-04-01",
+      "date_display": "01.04.2022",
+      "title": "НэщIым дыщыхуежьэкIэ!",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2022-04-01_1795803645351.mp3",
+      "duration": 310
+    },
+    {
+      "id": "khutba_20220325_1795803643938",
+      "date": "2022-03-25",
+      "date_display": "25.03.2022",
+      "title": "Алыхьым фIэфIхэм дащыгуфIыкIыныр!",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2022-03-25_1795803643938.mp3",
+      "duration": 354
+    },
     {
       "id": "khutba_20251203_1782336687510",
       "date": "2025-12-03",
@@ -48,6 +471,438 @@
     }
   ],
   "lectures": [
+    {
+      "id": "lecture_20261023_1795804213918",
+      "date": "2026-10-23",
+      "date_display": "23.10.2026",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-10-23_1795804213918.mp3",
+      "duration": 2343
+    },
+    {
+      "id": "lecture_20260911_1795804203626",
+      "date": "2026-09-11",
+      "date_display": "11.09.2026",
+      "title": "Хьэдис Дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-09-11_1795804203626.mp3",
+      "duration": 2320
+    },
+    {
+      "id": "lecture_20260904_1795804193306",
+      "date": "2026-09-04",
+      "date_display": "04.09.2026",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-09-04_1795804193306.mp3",
+      "duration": 2216
+    },
+    {
+      "id": "lecture_20260719_1795804178024",
+      "date": "2026-07-19",
+      "date_display": "19.07.2026",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-07-19_1795804178024.mp3",
+      "duration": 2704
+    },
+    {
+      "id": "lecture_20260711_1795804166386",
+      "date": "2026-07-11",
+      "date_display": "11.07.2026",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-07-11_1795804166386.mp3",
+      "duration": 2619
+    },
+    {
+      "id": "lecture_20260628_1795804154233",
+      "date": "2026-06-28",
+      "date_display": "28.06.2026",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-06-28_1795804154233.mp3",
+      "duration": 2287
+    },
+    {
+      "id": "lecture_20260619_1795804142545",
+      "date": "2026-06-19",
+      "date_display": "19.06.2026",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-06-19_1795804142545.mp3",
+      "duration": 2433
+    },
+    {
+      "id": "lecture_20260329_1795804129831",
+      "date": "2026-03-29",
+      "date_display": "29.03.2026",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-03-29_1795804129831.mp3",
+      "duration": 2410
+    },
+    {
+      "id": "lecture_20260307_1795804119144",
+      "date": "2026-03-07",
+      "date_display": "07.03.2026",
+      "title": "Къубэ-Тэбэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-03-07_1795804119144.mp3",
+      "duration": 1775
+    },
+    {
+      "id": "lecture_20260208_1795804106667",
+      "date": "2026-02-08",
+      "date_display": "08.02.2026",
+      "title": "НэщI мазэ къэблагъэм ехьэлIа дерс - 1",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-02-08_1795804106667.mp3",
+      "duration": 2483
+    },
+    {
+      "id": "lecture_20260118_1795804095824",
+      "date": "2026-01-18",
+      "date_display": "18.01.2026",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-01-18_1795804095824.mp3",
+      "duration": 2475
+    },
+    {
+      "id": "lecture_20260111_1795804084733",
+      "date": "2026-01-11",
+      "date_display": "11.01.2026",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2026-01-11_1795804084733.mp3",
+      "duration": 2480
+    },
+    {
+      "id": "lecture_20251226_1795804071748",
+      "date": "2025-12-26",
+      "date_display": "26.12.2025",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-12-26_1795804071748.mp3",
+      "duration": 2871
+    },
+    {
+      "id": "lecture_20251228_1795804060070",
+      "date": "2025-12-28",
+      "date_display": "28.12.2025",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-12-28_1795804060070.mp3",
+      "duration": 2897
+    },
+    {
+      "id": "lecture_20251219_1795804047115",
+      "date": "2025-12-19",
+      "date_display": "19.12.2025",
+      "title": "Хьэдис дерсыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-12-19_1795804047115.mp3",
+      "duration": 2767
+    },
+    {
+      "id": "lecture_20251128_1795804034610",
+      "date": "2025-11-28",
+      "date_display": "28.11.2025",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-11-28_1795804034610.mp3",
+      "duration": 2727
+    },
+    {
+      "id": "lecture_20251114_1795804019906",
+      "date": "2025-11-14",
+      "date_display": "14.11.2025",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-11-14_1795804019906.mp3",
+      "duration": 2685
+    },
+    {
+      "id": "lecture_20251107_1795804009688",
+      "date": "2025-11-07",
+      "date_display": "07.11.2025",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-11-07_1795804009688.mp3",
+      "duration": 2527
+    },
+    {
+      "id": "lecture_20251019_1795803996515",
+      "date": "2025-10-19",
+      "date_display": "19.10.2025",
+      "title": "Хьэдис дерс (Хьэлэлагъым теухуауэ иужьрей дерсыр)",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-10-19_1795803996515.mp3",
+      "duration": 2515
+    },
+    {
+      "id": "lecture_20251017_1795803987247",
+      "date": "2025-10-17",
+      "date_display": "17.10.2025",
+      "title": "Тэфсир дерсыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-10-17_1795803987247.mp3",
+      "duration": 2370
+    },
+    {
+      "id": "lecture_20250921_1795803974613",
+      "date": "2025-09-21",
+      "date_display": "21.09.2025",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-09-21_1795803974613.mp3",
+      "duration": 2324
+    },
+    {
+      "id": "lecture_20250912_1795803962643",
+      "date": "2025-09-12",
+      "date_display": "12.09.2025",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-09-12_1795803962643.mp3",
+      "duration": 2916
+    },
+    {
+      "id": "lecture_20250810_1795803947714",
+      "date": "2025-08-10",
+      "date_display": "10.08.2025",
+      "title": "Жумартагъым укъыхуриджэу къэкIуахэр (1)",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-08-10_1795803947714.mp3",
+      "duration": 2894
+    },
+    {
+      "id": "lecture_20250728_1795803932882",
+      "date": "2025-07-28",
+      "date_display": "28.07.2025",
+      "title": "Хьэдис дерс блэкIар",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-07-28_1795803932882.mp3",
+      "duration": 3271
+    },
+    {
+      "id": "lecture_20250630_1795803922325",
+      "date": "2025-06-30",
+      "date_display": "30.06.2025",
+      "title": "Тэфсир дерс блэкIар",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-06-30_1795803922325.mp3",
+      "duration": 2583
+    },
+    {
+      "id": "lecture_20250504_1795803906583",
+      "date": "2025-05-04",
+      "date_display": "04.05.2025",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-05-04_1795803906583.mp3",
+      "duration": 3133
+    },
+    {
+      "id": "lecture_20250502_1795803894535",
+      "date": "2025-05-02",
+      "date_display": "02.05.2025",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-05-02_1795803894535.mp3",
+      "duration": 2912
+    },
+    {
+      "id": "lecture_20250424_1795803881120",
+      "date": "2025-04-24",
+      "date_display": "24.04.2025",
+      "title": "Тэфсир дерс, Щад сурэ-2",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-04-24_1795803881120.mp3",
+      "duration": 2851
+    },
+    {
+      "id": "lecture_20250207_1795803867896",
+      "date": "2025-02-07",
+      "date_display": "07.02.2025",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-02-07_1795803867896.mp3",
+      "duration": 2408
+    },
+    {
+      "id": "lecture_20250203_1795803842705",
+      "date": "2025-02-03",
+      "date_display": "03.02.2025",
+      "title": "Зеикъуэ зэхуэс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2025-02-03_1795803842705.mp3",
+      "duration": 5807
+    },
+    {
+      "id": "lecture_20240817_1795803823526",
+      "date": "2024-08-17",
+      "date_display": "17.08.2024",
+      "title": "Лашынкъей дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2024-08-17_1795803823526.mp3",
+      "duration": 3872
+    },
+    {
+      "id": "lecture_20240610_1795803811783",
+      "date": "2024-06-10",
+      "date_display": "10.06.2024",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2024-06-10_1795803811783.mp3",
+      "duration": 2880
+    },
+    {
+      "id": "lecture_20240302_1795803800503",
+      "date": "2024-03-02",
+      "date_display": "02.03.2024",
+      "title": "Аушыджэр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2024-03-02_1795803800503.mp3",
+      "duration": 2864
+    },
+    {
+      "id": "lecture_20231117_1795803787557",
+      "date": "2023-11-17",
+      "date_display": "17.11.2023",
+      "title": "Хьэдис-дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-11-17_1795803787557.mp3",
+      "duration": 3161
+    },
+    {
+      "id": "lecture_20231201_1795803774650",
+      "date": "2023-12-01",
+      "date_display": "01.12.2023",
+      "title": "Ясин сурэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-12-01_1795803774650.mp3",
+      "duration": 3161
+    },
+    {
+      "id": "lecture_20231110_1795803764335",
+      "date": "2023-11-10",
+      "date_display": "10.11.2023",
+      "title": "Хьэдис-дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-11-10_1795803764335.mp3",
+      "duration": 2545
+    },
+    {
+      "id": "lecture_20231209_1795803761088",
+      "date": "2023-12-09",
+      "date_display": "09.12.2023",
+      "title": "ЛэжьакIуэм и хьэкъыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-12-09_1795803761088.mp3",
+      "duration": 784
+    },
+    {
+      "id": "lecture_20231124_1795803749635",
+      "date": "2023-11-24",
+      "date_display": "24.11.2023",
+      "title": "Ясин сурэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-11-24_1795803749635.mp3",
+      "duration": 2736
+    },
+    {
+      "id": "lecture_20231112_1795803736340",
+      "date": "2023-11-12",
+      "date_display": "12.11.2023",
+      "title": "Ясин сурэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-11-12_1795803736340.mp3",
+      "duration": 3180
+    },
+    {
+      "id": "lecture_20231029_1795803723855",
+      "date": "2023-10-29",
+      "date_display": "29.10.2023",
+      "title": "Ясин сурэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-10-29_1795803723855.mp3",
+      "duration": 2998
+    },
+    {
+      "id": "lecture_20231015_1795803711443",
+      "date": "2023-10-15",
+      "date_display": "15.10.2023",
+      "title": "Ясин сурэр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-10-15_1795803711443.mp3",
+      "duration": 2788
+    },
+    {
+      "id": "lecture_20231029_1795803697804",
+      "date": "2023-10-29",
+      "date_display": "29.10.2023",
+      "title": "Ясин сурэ",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-10-29_1795803697804.mp3",
+      "duration": 2998
+    },
+    {
+      "id": "lecture_20231006_1795803687281",
+      "date": "2023-10-06",
+      "date_display": "06.10.2023",
+      "title": "Хьэдис дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-10-06_1795803687281.mp3",
+      "duration": 2570
+    },
+    {
+      "id": "lecture_20231001_1795803677703",
+      "date": "2023-10-01",
+      "date_display": "01.10.2023",
+      "title": "Тэфсир дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-10-01_1795803677703.mp3",
+      "duration": 2318
+    },
+    {
+      "id": "lecture_20230317_1795803660179",
+      "date": "2023-03-17",
+      "date_display": "17.03.2023",
+      "title": "НэщI мазэ лъапIэм ехьэлIауэ екIуэкIа дерсыр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-03-17_1795803660179.mp3",
+      "duration": 3348
+    },
+    {
+      "id": "lecture_20230303_1795803649583",
+      "date": "2023-03-03",
+      "date_display": "03.03.2023",
+      "title": "Уи щхьэ хуэбгъэфащэр адрейхэми яхуэбгъэфэщэныр",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2023-03-03_1795803649583.mp3",
+      "duration": 2619
+    },
+    {
+      "id": "lecture_20220325_1795803625708",
+      "date": "2022-03-25",
+      "date_display": "25.03.2022",
+      "title": "НэщIым ехьэлIа дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2022-03-25_1795803625708.mp3",
+      "duration": 3991
+    },
+    {
+      "id": "lecture_20220318_1795803343096",
+      "date": "2022-03-18",
+      "date_display": "18.03.2022",
+      "title": "Гьэкъидэ дерс",
+      "speaker": "Шхануков Анзор",
+      "audio_url": "https://Tolik1661.github.io/khutba-data/audio/2022-03-18_1795803343096.mp3",
+      "duration": 3211
+    },
     {
       "id": "lecture_20210723_1782336268538",
       "date": "2021-07-23",
