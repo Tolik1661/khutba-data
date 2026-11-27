@@ -162,12 +162,15 @@ def apply(args):
         times = re.findall(r"time=(\d+):(\d+):(\d+)", proc.stderr)
         if times:                                   # в выгрузке длительность бывает нулевой — берём из ffmpeg
             h, mi, se = map(int, times[-1]); r["duration"] = h * 3600 + mi * 60 + se
-        if r["duration"] < robot.MIN_SECONDS:
+        if r["duration"] < 20:                      # короткие ответы на вопросы (20–45 с) — тоже записи
             (audio_dir / name).unlink(missing_ok=True); r["status"] = "skip"; r["reason"] = "запись слишком короткая"; continue
         y, m, d = r["date"].split("-")
         rec = {"id": f"{'khutba' if r['status'] == 'khutba' else 'lecture'}_{r['date'].replace('-', '')}_{ts}",
                "date": r["date"], "date_display": f"{d}.{m}.{y}", "title": r["title"], "speaker": r["speaker"],
                "audio_url": f"{base}/{name}", "duration": int(r["duration"])}
+        for extra in ("description", "series"):           # приложение пока их не показывает; старые версии такие поля пропускают
+            if r.get(extra):
+                rec[extra] = r[extra]
         data["khutba" if r["status"] == "khutba" else "lectures"].insert(0, rec)
         r["applied"] = rec["id"]; done += 1
         time.sleep(0.002)
